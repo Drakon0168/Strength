@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public abstract class UIElement : NonInteractable
 {
-    private int mana;
-    private int stamina;
-    private int maxMana;
-    private int maxStamina;
+    protected GameObject monitored;
+
+    protected abstract void OnChange();
 
     // Start is called before the first frame update
     void Start()
