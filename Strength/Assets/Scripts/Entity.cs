@@ -26,7 +26,7 @@ public abstract class Entity : Interactable
     [SerializeField]
     protected float baseDamage = 0;
     [SerializeField]
-    protected List<Abilities> abilities;
+    protected AbilityList abilities; // Use the ability list scriptableObject from the Abilities folder
 
     protected new Rigidbody2D rigidbody;
     protected Vector2 acceleration;
@@ -53,7 +53,7 @@ public abstract class Entity : Interactable
     protected virtual void Update()
     {
         Velocity += acceleration * Time.deltaTime;
-        transform.position += (Vector3)Velocity * Time.deltaTime;
+        acceleration = Vector2.zero;
     }
 
     /// <summary>

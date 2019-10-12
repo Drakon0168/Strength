@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Base ability class
+/// </summary>
 public abstract class Ability : ScriptableObject
 {
-    public Entity entity;
+    public Entity entity; // Entity using ability
 
+    [SerializeField]
     protected float attackModifier;
 
-    public DamageType damageType;
+    [SerializeField]
+    float castTime;
+
+    [SerializeField]
+    float coolDown;
+
+    public DamageType damageType; // Type of damage
 
     public enum DamageType
     {
@@ -16,8 +26,15 @@ public abstract class Ability : ScriptableObject
         Magical
     }
 
-    public abstract void Activate();
+    /// <summary>
+    /// Activates abililty
+    /// </summary>
+    public abstract void Activate(Entity entity);
 
+    /// <summary>
+    /// Calculates ya damage
+    /// </summary>
+    /// <returns>The damage that's calculated</returns>
     public float CalcDamage()
     {
         return entity.BaseDamage * attackModifier;
