@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    protected override void Attack(Abilities ability)
+    protected override void Attack(Ability ability)
     {
         throw new System.NotImplementedException();
     }
