@@ -10,6 +10,24 @@ public class Player : Entity
     private int maxStamina;
     private State state = new State();
 
+    protected override Vector2 Direction
+    {
+        get
+        {
+            return new Vector2(animator.GetFloat("DirectionX"), animator.GetFloat("DirectionY"));
+        }
+        set
+        {
+            animator.SetFloat("DirectionX", value.x);
+            animator.SetFloat("DirectionY", value.y);
+        }
+    }
+
+    protected float Speed
+    {
+        get { return animator.GetFloat("Speed"); }
+        set { animator.SetFloat("Speed", value); }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +61,17 @@ public class Player : Entity
         }
 
         direction.Normalize();
+        Direction = direction;
+
+        if(direction == Vector2.zero)
+        {
+            Speed = 0;
+        }
+        else
+        {
+            Speed = moveSpeed;
+        }
+
         ApplyForce((direction * moveSpeed) - Velocity);
         base.Update();
 
