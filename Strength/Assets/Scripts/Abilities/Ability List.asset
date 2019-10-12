@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ad10f457450d047a994799e75bf721, type: 3}
   m_Name: Ability List
   m_EditorClassIdentifier: 
-  abilities: []
+  _list:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
