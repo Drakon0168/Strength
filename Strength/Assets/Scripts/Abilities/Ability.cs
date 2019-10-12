@@ -31,6 +31,10 @@ public abstract class Ability : ScriptableObject
     /// </summary>
     public abstract void Activate(Entity entity);
 
+    /// <summary>
+    /// Calculates ya damage
+    /// </summary>
+    /// <returns>The damage that's calculated</returns>
     public float CalcDamage()
     {
         return entity.BaseDamage * attackModifier;

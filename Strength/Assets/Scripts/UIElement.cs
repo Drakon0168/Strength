@@ -4,8 +4,14 @@ using UnityEngine;
 
 public abstract class UIElement : NonInteractable
 {
+    /// <summary>
+    /// The thing the UI element is monitoring for changes
+    /// </summary>
     protected GameObject monitored;
 
+    /// <summary>
+    /// Call this on an element-specific trigger
+    /// </summary>
     protected abstract void OnChange();
 
     // Start is called before the first frame update
