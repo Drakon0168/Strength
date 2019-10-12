@@ -48,11 +48,11 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Attack(abilities.abilities[0]);
+            Attack(AbilityList.list[0]);
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Attack(abilities.abilities[1]);
+            Attack(AbilityList.list[1]);
         }
     }
 
