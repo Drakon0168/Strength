@@ -18,7 +18,7 @@ public abstract class Entity : Interactable
 {
     [Header("Entity")]
     [SerializeField]
-    protected float moveSpeed = 0;
+    protected float moveSpeed = 20f;
     [SerializeField]
     protected float magicResistance = 0;
     [SerializeField]
@@ -27,9 +27,23 @@ public abstract class Entity : Interactable
     protected float baseDamage = 0;
     [SerializeField]
     protected AbilityList abilities; // Use the ability list scriptableObject from the Abilities folder
+    [SerializeField]
+    protected float friction = .12f;
+    [SerializeField]
+    protected float maxFriction = .35f;
 
     protected new Rigidbody2D rigidbody;
     protected Vector2 acceleration;
+    protected enum State
+    {
+        Move,
+        Idle,
+        Transform,
+        Block,
+        AttackCharge,
+        Attacking,
+        Cooldown
+    }
 
     /// <summary>
     /// The base damage of this entity used to affect ability damage
@@ -52,6 +66,7 @@ public abstract class Entity : Interactable
 
     protected virtual void Update()
     {
+        Velocity += Vector2.ClampMagnitude(-Velocity * friction, maxFriction) ;
         Velocity += acceleration * Time.deltaTime;
         acceleration = Vector2.zero;
     }
@@ -78,5 +93,11 @@ public abstract class Entity : Interactable
     /// Casts an ability using this entity's stats
     /// </summary>
     /// <param name="ability">The ability to cast</param>
-    protected abstract void Attack(Abilities ability);
+    protected abstract void Attack(Ability ability);
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
 }
