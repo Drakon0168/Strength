@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public class Projectile : Interactable
 {
+    public Ranged ability;
+
     // Start is called before the first frame update
     void Start()
     {
