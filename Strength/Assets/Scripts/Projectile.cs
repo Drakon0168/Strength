@@ -6,6 +6,11 @@ public class Projectile : Interactable
 {
     public Ranged ability;
 
+    public override void TakeDamage(Ability attack)
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
