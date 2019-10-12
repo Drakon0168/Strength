@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+public abstract class Interactable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Interactable")]
+    [SerializeField]
+    private int maxHealth = 0;
+    private int health = 0;
 
-    // Update is called once per frame
-    void Update()
+    private Animator animator;
+
+    /// <summary>
+    /// Decrements health by the damage of the attack taking damage type into account
+    /// </summary>
+    /// <param name="attack"></param>
+    public abstract void TakeDamage(Ability attack);
+
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 }
