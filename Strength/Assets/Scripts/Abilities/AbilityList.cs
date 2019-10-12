@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// List of abilities entities can use
 /// </summary>
-[CreateAssetMenu(menuName = "Abilitie/Ability List")]
+[CreateAssetMenu(menuName = "Abilities/Ability List")]
 public class AbilityList : ScriptableObject, ISerializationCallbackReceiver
 {
     public static List<Ability> list;
