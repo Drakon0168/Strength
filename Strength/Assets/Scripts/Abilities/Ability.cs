@@ -12,6 +12,12 @@ public abstract class Ability : ScriptableObject
     [SerializeField]
     protected float attackModifier;
 
+    [SerializeField]
+    float castTime;
+
+    [SerializeField]
+    float coolDown;
+
     public DamageType damageType; // Type of damage
 
     public enum DamageType

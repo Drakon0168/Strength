@@ -10,11 +10,12 @@ public class AbilityListEditor : Editor
 
     private void OnEnable()
     {
-        list = serializedObject.FindProperty("abilities");
+        list = serializedObject.FindProperty("_list");
     }
 
     public override void OnInspectorGUI()
     {
+        serializedObject.Update();
         GUILayout.BeginVertical();
         for (int i = 0; i < list.arraySize; i++)
         {
@@ -30,6 +31,8 @@ public class AbilityListEditor : Editor
         if (GUILayout.Button("Add Ability"))
         {
             list.InsertArrayElementAtIndex(list.arraySize);
+            Debug.Log(list.arraySize);
         }
+        serializedObject.ApplyModifiedProperties();
     }
 }
