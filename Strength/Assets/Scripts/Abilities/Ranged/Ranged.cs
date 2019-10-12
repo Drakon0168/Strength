@@ -9,6 +9,8 @@ public abstract class Ranged : Ability
 
     public override void Activate(Entity entity)
     {
-        Instantiate(projectile, entity.gameObject.transform);
+        base.Activate(entity);
+        Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+        p.Init(this);
     }
 }

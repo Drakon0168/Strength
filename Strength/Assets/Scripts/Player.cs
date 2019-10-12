@@ -58,6 +58,6 @@ public class Player : Entity
 
     protected override void Attack(Ability ability)
     {
-
+        ability.Activate(this);
     }
 }
