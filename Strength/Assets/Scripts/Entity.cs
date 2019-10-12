@@ -53,7 +53,7 @@ public abstract class Entity : Interactable
     protected virtual void Update()
     {
         Velocity += acceleration * Time.deltaTime;
-        transform.position += (Vector3)Velocity * Time.deltaTime;
+        acceleration = Vector2.zero;
     }
 
     /// <summary>
