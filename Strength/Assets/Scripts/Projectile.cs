@@ -11,6 +11,13 @@ public class Projectile : Interactable
         throw new System.NotImplementedException();
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        Destroy(this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
