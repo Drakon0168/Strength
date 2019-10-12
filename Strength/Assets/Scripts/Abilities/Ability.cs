@@ -6,7 +6,7 @@ public abstract class Ability : ScriptableObject
 {
     public Entity entity;
 
-    public float attackModifier;
+    protected float attackModifier;
 
     public DamageType damageType;
 
@@ -17,4 +17,9 @@ public abstract class Ability : ScriptableObject
     }
 
     public abstract void Activate();
+
+    public float CalcDamage()
+    {
+        return entity.BaseDamage * attackModifier;
+    }
 }

@@ -14,8 +14,12 @@ public class Projectile : Interactable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        Destroy(this.gameObject);
+        if(collision.gameObject.GetComponent<Entity>() != null)
+        {
+            collision.gameObject.GetComponent<Entity>().TakeDamage(ability);
+            Destroy(this.gameObject);
+        }
+        
     }
 
     // Start is called before the first frame update
