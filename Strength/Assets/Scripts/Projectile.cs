@@ -16,7 +16,7 @@ public class Projectile : Interactable
     {
         if(collision.gameObject.GetComponent<Entity>() != null)
         {
-
+            collision.gameObject.GetComponent<Entity>().TakeDamage(ability);
             Destroy(this.gameObject);
         }
         
