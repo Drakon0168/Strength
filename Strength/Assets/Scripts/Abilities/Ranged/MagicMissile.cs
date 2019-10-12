@@ -7,6 +7,7 @@ public class MagicMissile : Ranged
 {
     public override void Activate(Entity entity)
     {
+        base.Activate(entity);
         Debug.Log("Magic Missile");
     }
 }

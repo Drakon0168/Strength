@@ -8,6 +8,7 @@ public class Projectile : Interactable
     /// The ability that produced the 
     /// </summary>
     public Ranged ability;
+    Vector2 velocity;
 
     public override void TakeDamage(Ability attack)
     {
@@ -28,15 +29,39 @@ public class Projectile : Interactable
         
     }
 
+    protected override void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
+    }
+
+    public void Init(Ranged ability)
+    {
+        this.ability = ability;
+        transform.position = ability.entity.transform.position;
+
+        Vector2 mP = Input.mousePosition;
+        mP = Camera.main.ScreenToWorldPoint(mP);
+        Vector2 diff = mP - ability.entity.Location;
+        float angle = Mathf.Atan2(diff.y, diff.x);
+        transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
+
+        diff.Normalize();
+        velocity = diff * 1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = new Vector2(transform.position.x + velocity.x, transform.position.y + velocity.y );
+    }
+
+    private void OnBecameInvisible()
+    {
+        Die();
     }
 }

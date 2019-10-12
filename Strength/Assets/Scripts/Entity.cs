@@ -64,6 +64,11 @@ public abstract class Entity : Interactable
         set { rigidbody.velocity = value; }
     }
 
+    public Vector2 Location
+    {
+        get { return transform.position; }
+    }
+
     protected virtual void Update()
     {
         Velocity += Vector2.ClampMagnitude(-Velocity * friction, maxFriction) ;
