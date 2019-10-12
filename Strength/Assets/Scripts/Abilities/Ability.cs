@@ -12,11 +12,11 @@ public abstract class Ability : ScriptableObject
     [SerializeField]
     protected float attackModifier;
 
-    [SerializeField]
-    float castTime;
+    public float castTime;
 
-    [SerializeField]
-    float coolDown;
+    public float activeTime;
+
+    public float coolDown;
 
     public DamageType damageType; // Type of damage
 
@@ -29,7 +29,10 @@ public abstract class Ability : ScriptableObject
     /// <summary>
     /// Activates abililty
     /// </summary>
-    public abstract void Activate(Entity entity);
+    public virtual void Activate(Entity entity)
+    {
+        this.entity = entity;
+    }
 
     /// <summary>
     /// Calculates ya damage

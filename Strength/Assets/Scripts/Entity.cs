@@ -10,7 +10,7 @@ public enum Abilities
     SwordSwipe,
     SwordSlam,
     MagicMissile,
-    Lightning
+    NightmareBlade
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
