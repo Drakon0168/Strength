@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class Ranged : Ability
 {
     [SerializeField]
-    GameObject projectile;
+    private GameObject projectile;
 }

@@ -9,6 +9,7 @@ public abstract class Ability : ScriptableObject
 {
     public Entity entity; // Entity using ability
 
+    [SerializeField]
     protected float attackModifier;
 
     public DamageType damageType; // Type of damage
