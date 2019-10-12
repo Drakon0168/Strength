@@ -57,6 +57,15 @@ public abstract class Entity : Interactable
     }
 
     /// <summary>
+    /// Decrements health by the damage of the attack taking damage type into account
+    /// </summary>
+    /// <param name="attack">The attack that the entity was hit with</param>
+    public override void TakeDamage(Ability attack)
+    {
+        //TODO decrement health based on the ability damage and damage type
+    }
+
+    /// <summary>
     /// Applies a force to the rigidbody
     /// </summary>
     /// <param name="force"></param>
