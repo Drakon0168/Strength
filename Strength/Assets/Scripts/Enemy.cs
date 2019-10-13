@@ -26,10 +26,15 @@ public class Enemy : Entity
 
     protected override void Awake()
     {
+        base.Awake();
+
         if (world == null)
         {
             world = FindObjectOfType<World>();
         }
+
+        player = FindObjectOfType<Player>();
+        currentState = EnemyStates.Searching;
     }
 
     protected override void Update()
@@ -83,14 +88,6 @@ public class Enemy : Entity
         }
 
         base.Update();
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        player = FindObjectOfType<Player>();
-        currentState = EnemyStates.Searching;
     }
 
     /// <summary>
