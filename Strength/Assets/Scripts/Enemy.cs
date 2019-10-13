@@ -20,25 +20,40 @@ public class Enemy : Entity
     [SerializeField]
     private float wanderDistance;
 
-    private Vector2 targetPosition;
-
+    private Player player;
     private EnemyStates currentState;
 
     protected override void Update()
     {
+        //Debug.Log(currentState);
+
         switch (currentState)
         {
-            case EnemyStates.Idle:
             case EnemyStates.Attacking:
+                StopMotion();
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+                    currentState = EnemyStates.Searching;
+                break;
+            case EnemyStates.Idle:
                 StopMotion();
                 break;
             case EnemyStates.Searching:
-                float vRandom = Random.value;
-                Vector2 target = new Vector2(wanderDistance * vRandom, wanderDistance * (1 - vRandom));
-                ApplyForce(target);
+                Vector2 distanceToPlayer = transform.position - player.transform.position;
+                
+                if(distanceToPlayer.sqrMagnitude < sightRange * sightRange)
+                {
+                    currentState = EnemyStates.MoveToAttack;
+                }
+                else
+                {
+                    //Wander
+                    //float vRandom = Random.value;
+                    //Vector2 target = new Vector2(wanderDistance * vRandom, wanderDistance * (1 - vRandom));
+                    //ApplyForce(target);
+                }
                 break;
             case EnemyStates.MoveToAttack:
-                Vector2 targetDirection = targetPosition - (Vector2)transform.position;
+                Vector2 targetDirection = player.transform.position - transform.position;
                 float targetDistance = targetDirection.magnitude;
                 
                 if(targetDistance < attackRange)
@@ -50,11 +65,22 @@ public class Enemy : Entity
                 else
                 {
                     ApplyForce((targetDirection / targetDistance) * moveSpeed);
+                    animator.SetFloat("Speed", moveSpeed);
+                    animator.SetFloat("DirectionX", targetDirection.x);
+                    animator.SetFloat("DirectionY", targetDirection.y);
                 }
                 break;
         }
 
         base.Update();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        player = FindObjectOfType<Player>();
+        currentState = EnemyStates.Searching;
     }
 
     /// <summary>
