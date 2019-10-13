@@ -1175,7 +1175,7 @@ Canvas:
   m_GameObject: {fileID: 1270528379}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -1420,7 +1420,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 176, y: 0}
-  m_SizeDelta: {x: 492.57013, y: 0}
+  m_SizeDelta: {x: 493.07, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1820217207
 MonoBehaviour:
@@ -1599,6 +1599,16 @@ PrefabInstance:
       propertyPath: bottomBar
       value: 
       objectReference: {fileID: 833370411}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: maxTop
+      value: 
+      objectReference: {fileID: 979805264}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: maxBottom
+      value: 
+      objectReference: {fileID: 1570819361}
     - target: {fileID: 6943217184444884496, guid: 0938d3d613fe42a45a6655d29e608753,
         type: 3}
       propertyPath: m_LocalPosition.x
