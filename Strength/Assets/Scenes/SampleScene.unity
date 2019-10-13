@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 979805266}
   m_Layer: 5
   m_Name: Max Top
-  m_TagString: Untagged
+  m_TagString: TopBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 1146855073}
   m_Layer: 5
   m_Name: Max Health
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1125,6 +1125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wS: 0
   player: {fileID: 1912406093}
+  health: {fileID: 174249116}
+  topBar: {fileID: 190191034}
+  bottomBar: {fileID: 833370411}
 --- !u!4 &1187774269
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,7 +1296,7 @@ GameObject:
   - component: {fileID: 1570819359}
   m_Layer: 5
   m_Name: Max Bottom
-  m_TagString: Untagged
+  m_TagString: BottomBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

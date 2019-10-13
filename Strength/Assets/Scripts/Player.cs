@@ -5,15 +5,21 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField]
-    private int mana;
+    private float mana;
     [SerializeField]
-    private int stamina;
+    private float stamina;
     [SerializeField]
-    private int maxMana;
+    private float maxMana;
     [SerializeField]
-    private int maxStamina;
+    private float maxStamina;
     [SerializeField]
     World world;
+    [SerializeField]
+    private float minorCost;
+    [SerializeField]
+    private float majorCost;
+    private bool manaMajor = true;
+    private bool physicalMajor = true;
     private State state = new State();
     public Transformation transformation;
 
@@ -83,33 +89,49 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(world.wS == World.WorldState.Physical)
+            if (world.wS == World.WorldState.Physical)
             {
-                Attack(AbilityList.list[0]);
-                stamina -= 10;
-                mana += 10;
+                if (stamina >= minorCost)
+                {
+                    Attack(world.abilityList.list[0]);
+                    stamina -= minorCost;
+                    mana += minorCost;
+                }
             }
             else
             {
-                Attack(AbilityList.list[2]);
-                mana -= 10;
-                stamina += 10;
+                if (mana >= minorCost)
+                {
+                    Attack(world.abilityList.list[2]);
+                    mana -= minorCost;
+                    stamina += minorCost;
+                }
             }
+            BoolCheck();
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (world.wS == World.WorldState.Physical)
             {
-                Attack(AbilityList.list[1]);
-                stamina -= 60;
-                mana += 60;
+                if (stamina >= majorCost && physicalMajor)
+                {
+                    Attack(world.abilityList.list[1]);
+                    stamina -= majorCost;
+                    mana += majorCost;
+                    physicalMajor = false;
+                }
             }
             else
             {
-                Attack(AbilityList.list[3]);
-                mana -= 60;
-                stamina += 60;
+                if (mana >= majorCost && manaMajor)
+                {
+                    Attack(world.abilityList.list[3]);
+                    mana -= majorCost;
+                    stamina += majorCost;
+                    manaMajor = false;
+                }
             }
+            BoolCheck();
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -122,6 +144,7 @@ public class Player : Entity
         {
 
         }
+        UpdateUI();
     }
 
     /// <summary>
@@ -156,6 +179,33 @@ public class Player : Entity
         if(transformation != null)
         {
             transformation();
+        }
+    }
+
+    private void UpdateUI()
+    {
+        world.health.fillAmount = health / maxHealth;
+        if(world.wS == World.WorldState.Physical)
+        {
+            world.topBar.fillAmount = stamina / maxStamina;
+            world.bottomBar.fillAmount = mana / maxMana;
+        }
+        else
+        {
+            world.topBar.fillAmount = mana / maxMana;
+            world.bottomBar.fillAmount = stamina / maxStamina;
+        }
+    }
+
+    private void BoolCheck()
+    {
+        if(stamina >= 100)
+        {
+            physicalMajor = true;
+        }
+        if(mana >= 100)
+        {
+            manaMajor = true;
         }
     }
 }

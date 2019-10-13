@@ -9,6 +9,4 @@ public class SwordSlam : Melee
     {
         Debug.Log("Sword Slam");
     }
-
-
 }
