@@ -11,6 +11,12 @@ public class World : MonoBehaviour
         Magical
     }
     private Canvas canvas;
+    [SerializeField]
+    private GameObject hud;
+
+    private Animator canvasAnimator;
+    private Animator hudAnimator;
+
     public WorldState wS = WorldState.Physical;
     public AbilityList abilityList;
     [SerializeField]
@@ -34,6 +40,8 @@ public class World : MonoBehaviour
     private void Start()
     {
         player.transformation += ChangeWorld;
+        canvasAnimator = canvas.GetComponent<Animator>();
+        hudAnimator = hud.GetComponent<Animator>();
     }
 
     /// <summary>
@@ -44,15 +52,15 @@ public class World : MonoBehaviour
         if(wS == WorldState.Physical)
         {
             wS = WorldState.Magical;
-            canvas.GetComponent<Image>().color = new Color32(108, 47, 31, 119);
-            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToMagic");
+            hudAnimator.SetTrigger("switchedToMagic");
+            canvasAnimator.SetTrigger("tintMagic");
             //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
-            canvas.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
-            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToStrength");
+            hudAnimator.SetTrigger("switchedToStrength");
+            canvasAnimator.SetTrigger("tintStrength");
             //TODO: Change screen color
         }
     }
