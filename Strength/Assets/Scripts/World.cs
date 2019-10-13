@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class World : ScriptableObject
+public class World : MonoBehaviour
 {
     public enum WorldState
     {
         Physical,
         Magical
     }
-
+    private Canvas canvas;
     public WorldState wS = WorldState.Physical;
+    [SerializeField]
+    protected Player player;
+
+    private void Awake()
+    {
+        canvas = FindObjectOfType<Canvas>();
+    }
+
+    private void Start()
+    {
+        player.transformation += ChangeWorld;
+    }
 
     /// <summary>
     /// Changes the world state and handles all that logic
@@ -21,13 +33,15 @@ public class World : ScriptableObject
         if(wS == WorldState.Physical)
         {
             wS = WorldState.Magical;
-            FindObjectOfType<Canvas>().GetComponent<Image>().color = new Color(108, 47, 31);
+            canvas.GetComponent<Image>().color = new Color32(108, 47, 31, 119);
+            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToMagic");
             //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
-            FindObjectOfType<Canvas>().GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            canvas.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToStrength");
             //TODO: Change screen color
         }
     }

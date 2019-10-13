@@ -39,7 +39,6 @@ public class Player : Entity
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -116,7 +115,7 @@ public class Player : Entity
         {
             Defense();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift)){
+        else if (Input.GetKeyDown(KeyCode.LeftControl)){
             Transform();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
@@ -158,12 +157,6 @@ public class Player : Entity
         {
             transformation();
         }
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        transformation += world.ChangeWorld;
     }
 }
 public delegate void Transformation();
