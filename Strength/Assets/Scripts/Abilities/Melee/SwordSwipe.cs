@@ -7,6 +7,7 @@ public class SwordSwipe : Melee
 {
     public override void Activate(Entity entity)
     {
+        base.Activate(entity);
         Debug.Log("Sword Swing");
     }
 }

@@ -22,6 +22,8 @@ public class Player : Entity
     public bool transitioning = false;
     private bool manaMajor = true;
     private bool physicalMajor = true;
+    private int abilityNum;
+    private bool buttonPressed = false;
     private State state = new State();
     public Transformation transformation;
 
@@ -101,7 +103,8 @@ public class Player : Entity
                 {
                     if (stamina >= minorCost)
                     {
-                        Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
+                        //Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
+                        abilityNum = (int)Abilities.SwordSwipe;
                         animator.SetTrigger("SwordSwipe");
                         stamina -= minorCost;
                         mana += minorCost;
@@ -111,7 +114,9 @@ public class Player : Entity
                 {
                     if (mana >= minorCost)
                     {
-                        Attack(world.abilityList.list[(int)Abilities.MagicMissile]);
+                        buttonPressed = true;
+                        //Attack(world.abilityList.list[(int)Abilities.MagicMissile]);
+                        abilityNum = (int)Abilities.MagicMissile;
                         animator.SetTrigger("ShootMissile");
                         mana -= minorCost;
                         stamina += minorCost;
@@ -124,7 +129,8 @@ public class Player : Entity
                 {
                     if (stamina >= majorCost && physicalMajor)
                     {
-                        Attack(world.abilityList.list[(int)Abilities.SwordSlam]);
+                        //Attack(world.abilityList.list[(int)Abilities.SwordSlam]);
+                        abilityNum = (int)Abilities.SwordSlam;
                         stamina -= majorCost;
                         mana += majorCost;
                         physicalMajor = false;
@@ -134,6 +140,8 @@ public class Player : Entity
                 {
                     if (mana >= majorCost && manaMajor)
                     {
+                        buttonPressed = true;
+                        //Attack(world.abilityList.list[(int)Abilities.NightmareBlade]);
                         Attack(world.abilityList.list[(int)Abilities.NightmareBlade]);
                         mana -= majorCost;
                         stamina += majorCost;
@@ -149,6 +157,24 @@ public class Player : Entity
 
             }
         }
+
+        // Activates ability after getting list of attack targets (for physical0
+        if (world.abilityList.list[abilityNum].damageType == Ability.DamageType.Magical)
+        {
+            if (buttonPressed)
+            {
+                Attack(world.abilityList.list[abilityNum]);
+                buttonPressed = false;
+            }
+        }
+        else
+        {
+            if (attackBoxActive)
+            {
+                Attack(world.abilityList.list[abilityNum]);
+            }
+        }
+
         ApplyForce((direction * moveSpeed) - Velocity);
         base.Update();
         BoolCheck();
@@ -162,7 +188,7 @@ public class Player : Entity
     /// <param name="ability">The ability to be used</param>
     protected override void Attack(Ability ability)
     {
-        ability.Activate(this);
+            ability.Activate(this);
     }
 
     /// <summary>
