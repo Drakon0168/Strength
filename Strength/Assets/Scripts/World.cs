@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class World : MonoBehaviour
+public class World : ScriptableObject
 {
     public enum WorldState
     {
@@ -11,12 +11,12 @@ public class World : MonoBehaviour
         Magical
     }
 
-    public static WorldState wS = WorldState.Physical;
+    public WorldState wS = WorldState.Physical;
 
     /// <summary>
     /// Changes the world state and handles all that logic
     /// </summary>
-    public static void ChangeWorld()
+    public void ChangeWorld()
     {
         if(wS == WorldState.Physical)
         {

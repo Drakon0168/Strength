@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField]
     private int mana;
+    [SerializeField]
     private int stamina;
+    [SerializeField]
     private int maxMana;
+    [SerializeField]
     private int maxStamina;
+    [SerializeField]
+    World world;
     private State state = new State();
+    public Transform transformation;
 
     protected override Vector2 Direction
     {
@@ -77,7 +84,7 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(World.wS == World.WorldState.Physical)
+            if(world.wS == World.WorldState.Physical)
             {
                 Attack(AbilityList.list[0]);
                 stamina -= 10;
@@ -92,7 +99,7 @@ public class Player : Entity
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (World.wS == World.WorldState.Physical)
+            if (world.wS == World.WorldState.Physical)
             {
                 Attack(AbilityList.list[1]);
                 stamina -= 60;
@@ -123,7 +130,7 @@ public class Player : Entity
     /// </summary>
     private void Defense()
     {
-        if(World.wS == World.WorldState.Physical)
+        if(world.wS == World.WorldState.Physical)
         {
             //TODO: Add Block
         }
@@ -145,8 +152,18 @@ public class Player : Entity
     /// <summary>
     /// Calls the world's transform method
     /// </summary>
-    private void Transform()
+    public void Transform()
     {
-        World.ChangeWorld();
+        if(transformation != null)
+        {
+            transformation();
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        transformation += world.ChangeWorld;
     }
 }
+public delegate void Transform();
