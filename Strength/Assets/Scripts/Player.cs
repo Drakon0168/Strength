@@ -202,29 +202,28 @@ public class Player : Entity
 
         if (physicalMajor && world.wS == World.WorldState.Physical)
         {
-            world.topBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
-            Debug.Log(world.topBar.gameObject.GetComponentInParent<Image>().name);
+            world.maxTop.color = new Color32(255, 255, 255, 255);
         }
         else if (manaMajor && world.wS == World.WorldState.Magical)
         {
-            world.topBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+            world.maxTop.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            world.topBar.GetComponentInParent<Image>().color = new Color32(0, 0, 0, 255);
+            world.maxTop.color = new Color32(0, 0, 0, 255);
         }
 
         if (physicalMajor && world.wS == World.WorldState.Magical)
         {
-            world.bottomBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+            world.maxBottom.color = new Color32(255, 255, 255, 255);
         }
         else if (manaMajor && world.wS == World.WorldState.Physical)
         {
-            world.bottomBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+            world.maxBottom.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            world.bottomBar.GetComponentInParent<Image>().color = new Color32(0, 0, 0, 255);
+            world.maxBottom.color = new Color32(0, 0, 0, 255);
         }
     }
 

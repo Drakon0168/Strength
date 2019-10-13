@@ -21,6 +21,10 @@ public class World : MonoBehaviour
     public Image topBar;
     [SerializeField]
     public Image bottomBar;
+    [SerializeField]
+    public Image maxTop;
+    [SerializeField]
+    public Image maxBottom;
 
     private void Awake()
     {
