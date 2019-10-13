@@ -14,6 +14,12 @@ public class Player : Entity
     private int maxStamina;
     [SerializeField]
     World world;
+    [SerializeField]
+    private int minorCost;
+    [SerializeField]
+    private int majorCost;
+    private bool manaMajor = true;
+    private bool physicalMajor = true;
     private State state = new State();
     public Transformation transformation;
 
@@ -83,33 +89,47 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(world.wS == World.WorldState.Physical)
+            if (world.wS == World.WorldState.Physical)
             {
-                Attack(AbilityList.list[0]);
-                stamina -= 10;
-                mana += 10;
+                if (stamina >= minorCost)
+                {
+                    Attack(AbilityList.list[0]);
+                    stamina -= minorCost;
+                    mana += minorCost;
+                }
             }
             else
             {
-                Attack(AbilityList.list[2]);
-                mana -= 10;
-                stamina += 10;
+                if (mana >= minorCost)
+                {
+                    Attack(AbilityList.list[2]);
+                    mana -= minorCost;
+                    stamina += minorCost;
+                }
             }
+            BoolCheck();
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (world.wS == World.WorldState.Physical)
             {
+                if(stamina >= majorCost && physicalMajor)
                 Attack(AbilityList.list[1]);
-                stamina -= 60;
-                mana += 60;
+                stamina -= majorCost;
+                mana += majorCost;
+                physicalMajor = false;
             }
             else
             {
-                Attack(AbilityList.list[3]);
-                mana -= 60;
-                stamina += 60;
+                if (mana >= majorCost && manaMajor)
+                {
+                    Attack(AbilityList.list[3]);
+                    mana -= majorCost;
+                    stamina += majorCost;
+                    manaMajor = false;
+                }
             }
+            BoolCheck();
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -156,6 +176,18 @@ public class Player : Entity
         if(transformation != null)
         {
             transformation();
+        }
+    }
+
+    private void BoolCheck()
+    {
+        if(stamina >= 100)
+        {
+            physicalMajor = true;
+        }
+        if(mana >= 100)
+        {
+            manaMajor = true;
         }
     }
 }
