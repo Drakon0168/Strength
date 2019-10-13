@@ -6,20 +6,7 @@ using UnityEngine;
 /// List of abilities entities can use
 /// </summary>
 [CreateAssetMenu(menuName = "Abilities/Ability List")]
-public class AbilityList : ScriptableObject, ISerializationCallbackReceiver
+public class AbilityList : ScriptableObject
 {
-    public static List<Ability> list;
-
-    [SerializeField]
-    private List<Ability> _list;
-
-    public void OnAfterDeserialize()
-    {
-        list = _list;
-    }
-
-    public void OnBeforeSerialize()
-    {
-        _list = list;
-    }
+    public List<Ability> list;
 }

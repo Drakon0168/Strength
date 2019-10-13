@@ -85,13 +85,13 @@ public class Player : Entity
         {
             if(world.wS == World.WorldState.Physical)
             {
-                Attack(AbilityList.list[0]);
+                Attack(world.abilityList.list[0]);
                 stamina -= 10;
                 mana += 10;
             }
             else
             {
-                Attack(AbilityList.list[2]);
+                Attack(world.abilityList.list[2]);
                 mana -= 10;
                 stamina += 10;
             }
@@ -100,13 +100,13 @@ public class Player : Entity
         {
             if (world.wS == World.WorldState.Physical)
             {
-                Attack(AbilityList.list[1]);
+                Attack(world.abilityList.list[1]);
                 stamina -= 60;
                 mana += 60;
             }
             else
             {
-                Attack(AbilityList.list[3]);
+                Attack(world.abilityList.list[3]);
                 mana -= 60;
                 stamina += 60;
             }
