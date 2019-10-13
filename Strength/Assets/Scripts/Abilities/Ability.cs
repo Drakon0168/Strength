@@ -39,19 +39,16 @@ public abstract class Ability : ScriptableObject
             {
                 entity.AttackList[i].TakeDamage(this);
             }
-            entity.AttackList.Clear();
         }
         else
         {
             Enemy e = entity as Enemy;
-            for (int i = 0; i < entity.AttackList.Count; i++)
+            if (entity.AttackList.Contains(e.player))
             {
-                if (entity.AttackList[i] is Player)
-                {
-                    
-                }
+                e.player.TakeDamage(this);
             }
         }
+        entity.AttackList.Clear();
     }
 
     /// <summary>

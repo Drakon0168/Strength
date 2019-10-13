@@ -21,7 +21,7 @@ public class Enemy : Entity
     private float wanderDistance;
     static World world;
 
-    private Player player;
+    public Player player;
     private EnemyStates currentState;
 
     protected override void Awake()
