@@ -14,7 +14,7 @@ public abstract class Interactable : MonoBehaviour
     /// <summary>
     /// The current health of the character
     /// </summary>
-    public int Health
+    public float Health
     {
         get { return health; }
         set
