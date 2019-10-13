@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Entity
 {
@@ -86,9 +87,6 @@ public class Player : Entity
                 Speed = moveSpeed;
             }
 
-            ApplyForce((direction * moveSpeed) - Velocity);
-            base.Update();
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (world.wS == World.WorldState.Physical)
@@ -145,9 +143,11 @@ public class Player : Entity
 
             }
         }
+        ApplyForce((direction * moveSpeed) - Velocity);
+        base.Update();
         BoolCheck();
         UpdateUI();
-        transitioning = GetComponent<Animator>().GetBool("Transitioning");
+        transitioning = animator.GetBool("Transitioning");
     }
 
     /// <summary>
@@ -198,6 +198,33 @@ public class Player : Entity
         {
             world.topBar.fillAmount = mana / maxMana;
             world.bottomBar.fillAmount = stamina / maxStamina;
+        }
+
+        if (physicalMajor && world.wS == World.WorldState.Physical)
+        {
+            world.topBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+            Debug.Log(world.topBar.gameObject.GetComponentInParent<Image>().name);
+        }
+        else if (manaMajor && world.wS == World.WorldState.Magical)
+        {
+            world.topBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else
+        {
+            world.topBar.GetComponentInParent<Image>().color = new Color32(0, 0, 0, 255);
+        }
+
+        if (physicalMajor && world.wS == World.WorldState.Magical)
+        {
+            world.bottomBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (manaMajor && world.wS == World.WorldState.Physical)
+        {
+            world.bottomBar.GetComponentInParent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else
+        {
+            world.bottomBar.GetComponentInParent<Image>().color = new Color32(0, 0, 0, 255);
         }
     }
 
