@@ -157,8 +157,8 @@ public class EnemyEncounter : MonoBehaviour
     {
         //get encounter object's position
         Vector3 spawnCenter = gameObject.transform.position;
-        float spawnHeight = GetComponent<BoxCollider2D>().bounds.extents.x;
-        float spawnWidth = GetComponent<BoxCollider2D>().bounds.extents.y;
+        float spawnWidth = GetComponent<BoxCollider2D>().bounds.extents.x;
+        float spawnHeight = GetComponent<BoxCollider2D>().bounds.extents.y;
         Vector2 spawnOffset = GetComponent<BoxCollider2D>().offset;
 
         return (Vector2) spawnCenter + spawnOffset + new Vector2(Random.value * spawnWidth, Random.value * spawnHeight);
@@ -166,21 +166,21 @@ public class EnemyEncounter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        //disable object's collider
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        Debug.Log("Encounter start");
-
-        //close off openings with obstacle tiles
-        for(int i = 0; i < obstacleTiles.Count; i++)
+        if(inEncounter == false)
         {
-            levelMap.SetTile(obstacleTiles[i], obstacleTile);
-        }
-        
-        //set inencounter to true
-        inEncounter = true;
+            Debug.Log("Encounter start");
 
-        //spawn the first wave of enemies
-        CreateWave(encounter[waveNumber]);
+            //close off openings with obstacle tiles
+            for (int i = 0; i < obstacleTiles.Count; i++)
+            {
+                levelMap.SetTile(obstacleTiles[i], obstacleTile);
+            }
+
+            //set inencounter to true
+            inEncounter = true;
+
+            //spawn the first wave of enemies
+            CreateWave(encounter[waveNumber]);
+        }
     }
 }
