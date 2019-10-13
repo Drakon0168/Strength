@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: e69dcfa45a6499a46baee751466e97e4
+guid: f0d75e64c3a7e67488d2a215170205ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6305150702341857163
-    second: game_ui_0
+      213: 8494637627259261307
+    second: wall_tile_0
   - first:
-      213: 8078494026692166565
-    second: game_ui_1
-  - first:
-      213: -5449877614235821332
-    second: game_ui_2
-  - first:
-      213: 1935427501021765151
-    second: game_ui_3
-  - first:
-      213: 4027018009614915596
-    second: game_ui_4
-  - first:
-      213: 8932110441435584360
-    second: game_ui_5
+      213: -5759658900458002767
+    second: wall_tile_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -60,11 +48,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 24, y: 24, z: 176, w: 16}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: game_ui_0
+      name: wall_tile_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 24
-        width: 64
-        height: 88
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +115,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a419b04dd4f75d94abeea57cd60c33aa
-      internalID: 6305150702341857163
+      spriteID: ee323d19a506b8345b221f3945ed6e00
+      internalID: 8494637627259261307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: game_ui_1
+      name: wall_tile_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 68
-        width: 136
-        height: 40
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,50 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 366abc12f3ef7d940bc4d7b2a6ec6650
-      internalID: 8078494026692166565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game_ui_2
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 28
-        width: 124
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bad0a82d22f48bd4c831589ae084c103
-      internalID: -5449877614235821332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game_ui_3
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 6
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5724a5d794fc204fbca3b348b512a35
-      internalID: 1935427501021765151
+      spriteID: 2c98f5ec935980f449baed4bf3bfb64f
+      internalID: -5759658900458002767
       vertices: []
       indices: 
       edges: []
@@ -199,7 +145,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 50971ce6fd39ee94098b8a219c59091a
+    spriteID: 366d0bf96e82a944e858c506d6e71c77
     internalID: 0
     vertices: []
     indices: 
@@ -208,7 +154,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 1
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

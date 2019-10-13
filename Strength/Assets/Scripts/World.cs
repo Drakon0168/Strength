@@ -1,30 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public static class World
+public class World : MonoBehaviour
 {
     public enum WorldState
     {
         Physical,
         Magical
     }
+    private Canvas canvas;
+    public WorldState wS = WorldState.Physical;
+    [SerializeField]
+    protected Player player;
 
-    public static WorldState wS = WorldState.Physical;
+    private void Awake()
+    {
+        canvas = FindObjectOfType<Canvas>();
+    }
+
+    private void Start()
+    {
+        player.transformation += ChangeWorld;
+    }
 
     /// <summary>
     /// Changes the world state and handles all that logic
     /// </summary>
-    public static void ChangeWorld()
+    public void ChangeWorld()
     {
         if(wS == WorldState.Physical)
         {
             wS = WorldState.Magical;
+            canvas.GetComponent<Image>().color = new Color32(108, 47, 31, 119);
+            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToMagic");
             //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
+            canvas.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+            canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToStrength");
             //TODO: Change screen color
         }
     }
