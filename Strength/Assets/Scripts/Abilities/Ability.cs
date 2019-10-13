@@ -19,6 +19,7 @@ public abstract class Ability : ScriptableObject
     public float coolDown;
 
     public DamageType damageType; // Type of damage
+    
 
     public enum DamageType
     {
@@ -32,6 +33,22 @@ public abstract class Ability : ScriptableObject
     public virtual void Activate(Entity entity)
     {
         this.entity = entity;
+        foreach(Collider2D c in entity.attackList)
+        {
+            Interactable i = c.GetComponent<Interactable>();
+            if(i is Entity)
+            {
+                i.TakeDamage(this);
+            }
+            else if(i is Projectile)
+            {
+                i.Die();
+            }
+            else
+            {
+                throw new System.Exception();
+            }
+        }
     }
 
     /// <summary>

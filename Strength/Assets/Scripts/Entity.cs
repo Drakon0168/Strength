@@ -31,7 +31,10 @@ public abstract class Entity : Interactable
     protected float friction = .12f;
     [SerializeField]
     protected float maxFriction = .35f;
+    [SerializeField]
+    protected Collider2D attackCollider;
 
+    public List<Collider2D> attackList = new List<Collider2D>();
     protected new Rigidbody2D rigidbody;
     protected Vector2 acceleration;
     protected enum State
@@ -67,6 +70,24 @@ public abstract class Entity : Interactable
     public Vector2 Location
     {
         get { return transform.position; }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        attackList.Add(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        attackList.Remove(collision);
+    }
+
+    public Collider2D AttackCollider
+    {
+        get
+        {
+            return attackCollider;
+        }
     }
 
     protected virtual void Update()
