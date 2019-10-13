@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField]
     private int mana;
+    [SerializeField]
     private int stamina;
+    [SerializeField]
     private int maxMana;
+    [SerializeField]
     private int maxStamina;
+    [SerializeField]
+    World world;
     private State state = new State();
+    public Transformation transformation;
 
     protected override Vector2 Direction
     {
@@ -32,7 +39,6 @@ public class Player : Entity
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -77,7 +83,7 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(World.wS == World.WorldState.Physical)
+            if(world.wS == World.WorldState.Physical)
             {
                 Attack(AbilityList.list[0]);
                 stamina -= 10;
@@ -92,7 +98,7 @@ public class Player : Entity
         }
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (World.wS == World.WorldState.Physical)
+            if (world.wS == World.WorldState.Physical)
             {
                 Attack(AbilityList.list[1]);
                 stamina -= 60;
@@ -109,7 +115,7 @@ public class Player : Entity
         {
             Defense();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift)){
+        else if (Input.GetKeyDown(KeyCode.LeftControl)){
             Transform();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
@@ -123,7 +129,7 @@ public class Player : Entity
     /// </summary>
     private void Defense()
     {
-        if(World.wS == World.WorldState.Physical)
+        if(world.wS == World.WorldState.Physical)
         {
             //TODO: Add Block
         }
@@ -145,8 +151,12 @@ public class Player : Entity
     /// <summary>
     /// Calls the world's transform method
     /// </summary>
-    private void Transform()
+    public void Transform()
     {
-        World.ChangeWorld();
+        if(transformation != null)
+        {
+            transformation();
+        }
     }
 }
+public delegate void Transformation();
