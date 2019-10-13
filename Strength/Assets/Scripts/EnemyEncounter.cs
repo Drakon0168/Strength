@@ -153,8 +153,13 @@ public class EnemyEncounter : MonoBehaviour
         return player.Location + spawnDirection * spawnRange;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
+        //disable object's collider
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        Debug.Log("Encounter start");
+
         //set inencounter to true
         inEncounter = true;
 

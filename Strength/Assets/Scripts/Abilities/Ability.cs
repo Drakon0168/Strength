@@ -43,7 +43,7 @@ public abstract class Ability : ScriptableObject
             }
             else
             {
-                throw new System.Exception();
+                //throw new System.Exception();
             }
         }
     }
