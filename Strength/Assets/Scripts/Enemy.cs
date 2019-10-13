@@ -21,16 +21,8 @@ public class Enemy : Entity
     private float wanderDistance;
     static World world;
 
-    private Player player;
+    public Player player;
     private EnemyStates currentState;
-
-    protected override void Awake()
-    {
-        if (world == null)
-        {
-            world = FindObjectOfType<World>();
-        }
-    }
 
     protected override void Update()
     {
@@ -88,6 +80,11 @@ public class Enemy : Entity
     protected override void Awake()
     {
         base.Awake();
+
+        if (world == null)
+        {
+            world = FindObjectOfType<World>();
+        }
 
         player = FindObjectOfType<Player>();
         currentState = EnemyStates.Searching;
