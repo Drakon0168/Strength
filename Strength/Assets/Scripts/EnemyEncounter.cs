@@ -15,6 +15,9 @@ public class EnemyEncounter : MonoBehaviour
     //list of living enemies
     private List<Enemy> livingEnemies;
 
+    //list of all enemies in a wave
+    private List<Enemy> waveEnemies;
+
     //current wave number
     private int waveNumber;
 
@@ -26,11 +29,17 @@ public class EnemyEncounter : MonoBehaviour
     [SerializeField]
     private Vector2 spawnRange;
 
+    //field to check if the player is in an encounter
+    private bool inEncounter;
+
     // Start is called before the first frame update
     void Start()
     {
         //initialize wave number
         waveNumber = 0;
+
+        //initialize encounter bool
+        inEncounter = false;
 
         //initialize living enemy list
         livingEnemies = new List<Enemy>();
@@ -39,52 +48,77 @@ public class EnemyEncounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(livingEnemies.Count == 0)
+        //end the encounter when all waves are clear
+        if (waveNumber >= encounter.Count)
         {
-            //debug for wave changes
-            Debug.Log("wave cleared");
+            //TODO end encounter
+            Debug.Log("Encounter over");
 
-            //create new wave of enemies
-            CreateWave(encounter[waveNumber]);
+            Destroy(gameObject);
+        }
 
-            //increase the wave count
-            waveNumber++;
-
-            //end the encounter when all waves are clear
-            if (waveNumber >= encounter.Count)
+        //spawn the next wave when all living enemies are destroyed
+        if(inEncounter == true)
+        {
+            if (livingEnemies.Count == 0)
             {
-                //TODO end encounter
+                //debug for wave changes
+                Debug.Log("wave cleared");
+
+                //increase the wave count
+                waveNumber++;
+
+                //create new wave of enemies
+                CreateWave(encounter[waveNumber]);
+            }
+        }
+
+        //remove an enemy if it's been destroyed
+        foreach(Enemy enemy in waveEnemies)
+        {
+            if(enemy == null)
+            {
+                livingEnemies.Remove(enemy);
             }
         }
     }
 
     private void CreateWave(Vector4 enemies)
     {
-        //create temporary list to hold enemies for a specific wave
+        //initialize lists to hold enemies for a specific wave
         livingEnemies = new List<Enemy>();
+        waveEnemies = new List<Enemy>();
 
         //add specified number of golems to living enemy list
         for(int i = 0; i < enemies.x; i++)
         {
-            livingEnemies.Add(Instantiate(enemyTypes[0], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
+            Enemy golem = Instantiate(enemyTypes[0], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>();
+            livingEnemies.Add(golem);
+            waveEnemies.Add(golem);
         }
 
         //add specified number of dark nights to living enemy list
         for (int i = 0; i < enemies.y; i++)
         {
-            livingEnemies.Add(Instantiate(enemyTypes[1], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
+            Enemy darkKnight = Instantiate(enemyTypes[1], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>();
+            livingEnemies.Add(darkKnight);
+            waveEnemies.Add(darkKnight);
         }
 
         //add specified number of dark mages to living enemy list
         for (int i = 0; i < enemies.z; i++)
         {
-            livingEnemies.Add(Instantiate(enemyTypes[2], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
+            Enemy darkMage = Instantiate(enemyTypes[2], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>();
+            livingEnemies.Add(darkMage);
+            waveEnemies.Add(darkMage);
         }
 
         //add specified number of test enemies to living enemy list
         for (int i = 0; i < enemies.w; i++)
         {
-            livingEnemies.Add(Instantiate(enemyTypes[3], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
+            Enemy test = Instantiate(enemyTypes[3], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>();
+            livingEnemies.Add(test);
+            waveEnemies.Add(test);
         }
     }
 
