@@ -141,10 +141,6 @@ public class Player : Entity
                     }
                 }
             }
-        else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Defense();
-            }
             else if (Input.GetKeyDown(KeyCode.LeftControl)) {
                 Transform();
             }
@@ -158,21 +154,6 @@ public class Player : Entity
         BoolCheck();
         UpdateUI();
         transitioning = animator.GetBool("Transitioning");
-    }
-
-    /// <summary>
-    /// Dodge/Blocking
-    /// </summary>
-    private void Defense()
-    {
-        if(world.wS == World.WorldState.Physical)
-        {
-            //TODO: Add Block
-        }
-        else
-        {
-            //TODO: Add Dodge
-        }
     }
 
     /// <summary>
