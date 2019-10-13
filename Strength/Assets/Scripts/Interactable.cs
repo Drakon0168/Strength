@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator)), RequireComponent(typeof(Collider2D))]
 public abstract class Interactable : MonoBehaviour
 {
     [Header("Interactable")]
     [SerializeField]
-    protected float maxHealth = 0;
+    protected float maxHealth = 10;
     [SerializeField]
-    protected float health = 0;
+    protected float health = 10;
+
+    protected Collider2D collider2;
 
     /// <summary>
     /// The current health of the character
@@ -44,6 +46,7 @@ public abstract class Interactable : MonoBehaviour
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
+        collider2 = GetComponent<Collider2D>();
     }
 
     public void Die()

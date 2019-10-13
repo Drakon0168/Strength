@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magic Missile
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
-  attackModifier: 0
+  attackModifier: 1
   castTime: 0
   activeTime: 0
   coolDown: 0

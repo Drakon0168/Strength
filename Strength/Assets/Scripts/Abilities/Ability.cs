@@ -10,7 +10,7 @@ public abstract class Ability : ScriptableObject
     public Entity entity; // Entity using ability
 
     [SerializeField]
-    protected float attackModifier;
+    protected float attackModifier = 1f;
 
     public float castTime;
 
