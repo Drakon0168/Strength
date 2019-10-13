@@ -20,11 +20,11 @@ public abstract class Entity : Interactable
     [SerializeField]
     protected float moveSpeed = 20f;
     [SerializeField]
-    protected float magicResistance = 0;
+    protected float magicResistance = .5f;
     [SerializeField]
-    protected float physicalResistance = 0;
+    protected float physicalResistance = .5f;
     [SerializeField]
-    protected float baseDamage = 0;
+    protected float baseDamage = 1;
     [SerializeField]
     protected AbilityList abilities; // Use the ability list scriptableObject from the Abilities folder
     [SerializeField]
@@ -33,7 +33,6 @@ public abstract class Entity : Interactable
     protected float maxFriction = .35f;
     [SerializeField]
     protected Collider2D attackCollider;
-    [SerializeField]
 
     public List<Collider2D> attackList = new List<Collider2D>();
     protected new Rigidbody2D rigidbody;
@@ -52,7 +51,7 @@ public abstract class Entity : Interactable
     /// <summary>
     /// The base damage of this entity used to affect ability damage
     /// </summary>
-    public float BaseDamage { get; }
+    public float BaseDamage { get { return baseDamage; } }
 
     /// <summary>
     /// The current direction of motion
@@ -104,7 +103,14 @@ public abstract class Entity : Interactable
     /// <param name="attack">The attack that the entity was hit with</param>
     public override void TakeDamage(Ability attack)
     {
-        //TODO decrement health based on the ability damage and damage type
+        if(attack.damageType == Ability.DamageType.Magical)
+        {
+            Health -= magicResistance * attack.CalcDamage();
+        }
+        else
+        {
+            Health -= physicalResistance * attack.CalcDamage();
+        }
     }
 
     /// <summary>
