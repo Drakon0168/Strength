@@ -51,6 +51,10 @@ public class Player : Entity
         animator.SetFloat("MissileChargeMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].castTime);
         animator.SetFloat("MissileAttackMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].activeTime);
         animator.SetFloat("MissileCooldownMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].coolDown);
+
+        animator.SetFloat("SwipeChargeMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].castTime);
+        animator.SetFloat("SwipeAttackMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].activeTime);
+        animator.SetFloat("SwipeCooldownMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].coolDown);
     }
 
     // Update is called once per frame
@@ -98,6 +102,7 @@ public class Player : Entity
                     if (stamina >= minorCost)
                     {
                         Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
+                        animator.SetTrigger("SwordSwipe");
                         stamina -= minorCost;
                         mana += minorCost;
                     }
