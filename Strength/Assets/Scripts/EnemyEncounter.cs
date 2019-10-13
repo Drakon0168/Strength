@@ -68,9 +68,9 @@ public class EnemyEncounter : MonoBehaviour
         //end the encounter when all waves are clear
         if (waveNumber >= encounter.Count)
         {
-            //TODO end encounter
             Debug.Log("Encounter over");
 
+            //remove obstacle tiles
             for (int i = 0; i < obstacleTiles.Count; i++)
             {
                 levelMap.SetTile(obstacleTiles[i], null);
@@ -161,17 +161,20 @@ public class EnemyEncounter : MonoBehaviour
         //Direction of spawn raycast
         Vector2 spawnDirection = new Vector2(Mathf.Cos(spawnAngle), Mathf.Sin(spawnAngle));
 
-         RaycastHit2D[] spawnCast = Physics2D.RaycastAll(player.Location, spawnDirection, enemyRange);
+        RaycastHit2D[] spawnCast = Physics2D.RaycastAll(player.Location, spawnDirection, enemyRange);
 
         foreach(RaycastHit2D spawnCheck in spawnCast)
         {
+            Debug.DrawLine(player.transform.position, spawnCheck.point, Color.green, 5);
             //check if the raycast hit a wall, or else run the method again
-            if(spawnCheck.collider.tag == "Wall")
+            if (spawnCheck.collider.gameObject == levelTiles)
             {
+                Debug.Log("rechecking collision");
                 return GetRandomLocation();
             }
         }
 
+        Debug.DrawLine(player.transform.position, player.Location + spawnDirection * spawnRange, Color.green, 5);
         return player.Location + spawnDirection * spawnRange;
     }
 

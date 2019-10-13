@@ -33,11 +33,25 @@ public abstract class Ability : ScriptableObject
     public virtual void Activate(Entity entity)
     {
         this.entity = entity;
-        for (int i = 0; i  < entity.AttackList.Count; i++)
+        if (entity is Player)
         {
+            for (int i = 0; i < entity.AttackList.Count; i++)
+            {
                 entity.AttackList[i].TakeDamage(this);
+            }
+            entity.AttackList.Clear();
         }
-        entity.AttackList.Clear();
+        else
+        {
+            Enemy e = entity as Enemy;
+            for (int i = 0; i < entity.AttackList.Count; i++)
+            {
+                if (entity.AttackList[i] is Player)
+                {
+                    
+                }
+            }
+        }
     }
 
     /// <summary>

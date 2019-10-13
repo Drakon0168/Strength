@@ -19,9 +19,18 @@ public class Enemy : Entity
     private float sightRange;
     [SerializeField]
     private float wanderDistance;
+    static World world;
 
     private Player player;
     private EnemyStates currentState;
+
+    protected override void Awake()
+    {
+        if (world == null)
+        {
+            world = FindObjectOfType<World>();
+        }
+    }
 
     protected override void Update()
     {
@@ -59,6 +68,7 @@ public class Enemy : Entity
                 if(targetDistance < attackRange)
                 {
                     //TODO: Start the attack
+                    Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
                     currentState = EnemyStates.Attacking;
                     animator.SetTrigger("Attack");
                 }
@@ -96,6 +106,6 @@ public class Enemy : Entity
 
     protected override void Attack(Ability ability)
     {
-        throw new System.NotImplementedException();
+        ability.Activate(this);
     }
 }
