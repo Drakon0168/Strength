@@ -45,6 +45,7 @@ public class Enemy : Entity
                 {
                     //TODO: Start the attack
                     currentState = EnemyStates.Attacking;
+                    animator.SetTrigger("Attack");
                 }
                 else
                 {

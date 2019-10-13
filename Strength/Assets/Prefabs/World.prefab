@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71121405bf93ab04fb4fc4f6db2fc41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 0}
   wS: 0
   abilityList: {fileID: 11400000, guid: 5aa017bcffe48df42bb85814d176f328, type: 2}
-  player: {fileID: 4767919603148621799, guid: ce43762a0e9153d43bf8c15b58ee3d1a, type: 3}
+  player: {fileID: 0}
   health: {fileID: 0}
   topBar: {fileID: 0}
   bottomBar: {fileID: 0}
+  maxTop: {fileID: 0}
+  maxBottom: {fileID: 0}
