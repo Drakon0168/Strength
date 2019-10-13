@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public static class World
+public class World : MonoBehaviour
 {
     public enum WorldState
     {
@@ -20,11 +21,13 @@ public static class World
         if(wS == WorldState.Physical)
         {
             wS = WorldState.Magical;
+            FindObjectOfType<Canvas>().GetComponent<Image>().color = new Color(108, 47, 31);
             //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
+            FindObjectOfType<Canvas>().GetComponent<Image>().color = new Color(0, 0, 0, 0);
             //TODO: Change screen color
         }
     }
