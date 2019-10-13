@@ -32,9 +32,15 @@ public abstract class Entity : Interactable
     [SerializeField]
     protected float maxFriction = .35f;
     [SerializeField]
-    protected Collider2D attackCollider;
+    protected AttackCollider attackCollider;
+    [SerializeField]
+    protected bool hasAttackBox = false; // Needed fpr melee attacks
 
-    public List<Collider2D> attackList = new List<Collider2D>();
+
+    [HideInInspector]
+    public bool attackBoxActive;
+
+    //public List<Collider2D> attackList = new List<Collider2D>();
     protected new Rigidbody2D rigidbody;
     protected Vector2 acceleration;
     protected enum State
@@ -75,21 +81,11 @@ public abstract class Entity : Interactable
         get { return transform.position; }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        attackList.Add(collision);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        attackList.Remove(collision);
-    }
-
-    public Collider2D AttackCollider
+    public List<Entity> AttackList
     {
         get
         {
-            return attackCollider;
+            return attackCollider.attackList;
         }
     }
 
@@ -134,6 +130,15 @@ public abstract class Entity : Interactable
     protected override void Awake()
     {
         base.Awake();
+
+        if (hasAttackBox)
+        {
+            if (attackCollider != null)
+                attackCollider.entity = this;
+            else
+                Debug.LogWarning(name + " does not have an AttackCollider and probably needs one.");
+        }
+
         rigidbody = GetComponent<Rigidbody2D>();
     }
 }
