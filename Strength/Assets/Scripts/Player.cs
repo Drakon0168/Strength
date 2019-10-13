@@ -15,7 +15,7 @@ public class Player : Entity
     [SerializeField]
     World world;
     private State state = new State();
-    public Transform transformation;
+    public Transformation transformation;
 
     protected override Vector2 Direction
     {
@@ -166,4 +166,4 @@ public class Player : Entity
         transformation += world.ChangeWorld;
     }
 }
-public delegate void Transform();
+public delegate void Transformation();
