@@ -116,7 +116,7 @@ public abstract class Entity : Interactable
     /// Applies a force to the rigidbody
     /// </summary>
     /// <param name="force"></param>
-    protected void ApplyForce(Vector2 force)
+    public void ApplyForce(Vector2 force)
     {
         acceleration += force / rigidbody.mass;
     }
