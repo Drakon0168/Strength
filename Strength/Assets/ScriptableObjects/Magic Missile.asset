@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   attackModifier: 0
-  castTime: 0
-  activeTime: 0
-  coolDown: 0
+  castTime: 0.25
+  activeTime: 0.33
+  coolDown: 0.25
   damageType: 1
   projectile: {fileID: 1672952382906382496, guid: eab3df2c5857d0041a65d3132e479b86,
     type: 3}
