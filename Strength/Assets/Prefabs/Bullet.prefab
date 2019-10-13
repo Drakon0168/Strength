@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   ability: {fileID: 0}
+  flightSpeed: 25
 --- !u!96 &33626049848282905
 TrailRenderer:
   serializedVersion: 2
@@ -125,7 +126,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672952382906382496}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -134,7 +135,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9f8d21397cd26f64090acc3067f821bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,7 +155,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -163,12 +164,21 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
-        inSlope: -0.3475355
-        outSlope: -0.3475355
+        value: 0
+        inSlope: 2.387755
+        outSlope: 2.387755
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0.31460783
+      - serializedVersion: 3
+        time: 0.22596359
+        value: 0.34523773
+        inSlope: -0.050535634
+        outSlope: -0.050535634
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
         outWeight: 0.27403846
       - serializedVersion: 3
         time: 1

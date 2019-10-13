@@ -17,5 +17,5 @@ MonoBehaviour:
   castTime: 0
   activeTime: 0
   coolDown: 0
-  damageType: 0
+  damageType: 1
   projectile: {fileID: 0}
