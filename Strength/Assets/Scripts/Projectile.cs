@@ -31,16 +31,6 @@ public class Projectile : Interactable
         
     }
 
-    protected override void Awake()
-    {
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void Init(Ranged ability)
     {
         this.ability = ability;
