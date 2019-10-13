@@ -53,7 +53,7 @@ public abstract class Entity : Interactable
     /// <summary>
     /// The current direction of motion
     /// </summary>
-    protected Vector2 Direction { get; set; }
+    protected virtual Vector2 Direction { get; set; }
 
     /// <summary>
     /// The current velocity of the entity

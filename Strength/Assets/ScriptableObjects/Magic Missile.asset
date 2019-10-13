@@ -17,5 +17,6 @@ MonoBehaviour:
   castTime: 0
   activeTime: 0
   coolDown: 0
-  damageType: 0
-  projectile: {fileID: 0}
+  damageType: 1
+  projectile: {fileID: 1672952382906382496, guid: eab3df2c5857d0041a65d3132e479b86,
+    type: 3}
