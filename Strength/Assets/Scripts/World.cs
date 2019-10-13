@@ -54,14 +54,12 @@ public class World : MonoBehaviour
             wS = WorldState.Magical;
             hudAnimator.SetTrigger("switchedToMagic");
             canvasAnimator.SetTrigger("tintMagic");
-            //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
             hudAnimator.SetTrigger("switchedToStrength");
             canvasAnimator.SetTrigger("tintStrength");
-            //TODO: Change screen color
         }
     }
 }
