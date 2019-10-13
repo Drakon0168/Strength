@@ -411,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.59999, y: 0.12686849, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1113,25 +1113,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -4, y: -6, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 21, y: -6, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -4, y: -5, z: 0}
     second:
       m_TileIndex: 0
       m_TileSpriteIndex: 0
@@ -1149,25 +1131,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -4, y: -4, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 21, y: -4, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -4, y: -3, z: 0}
     second:
       m_TileIndex: 0
       m_TileSpriteIndex: 0
@@ -1439,14 +1403,14 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 70
+  - m_RefCount: 66
     m_Data: {fileID: 11400000, guid: 2b4b0f31fc30e0345807cde37db0aca3, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 70
+  - m_RefCount: 66
     m_Data: {fileID: -5759658900458002767, guid: f0d75e64c3a7e67488d2a215170205ed,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 70
+  - m_RefCount: 66
     m_Data:
       e00: 1
       e01: 0
@@ -1465,7 +1429,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 70
+  - m_RefCount: 66
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1594,6 +1558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
+      propertyPath: obstacleTiles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
       propertyPath: encounter.Array.data[0].w
       value: 3
       objectReference: {fileID: 0}
@@ -1623,6 +1592,57 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6046300304649635445, guid: f248ab60f7ef9d24faa732a88362e35f,
         type: 3}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: levelTiles
+      value: 
+      objectReference: {fileID: 1933476891}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[0].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[0].y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b4b0f31fc30e0345807cde37db0aca3,
+        type: 2}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[1].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[1].y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[2].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[2].y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[3].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: obstacleTiles.Array.data[3].y
+      value: -6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8440263f2608cb140afe9a87a0d351d1, type: 3}
 --- !u!1001 &2460872312629873071

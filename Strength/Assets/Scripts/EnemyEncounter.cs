@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyEncounter : MonoBehaviour
 {
@@ -29,6 +30,19 @@ public class EnemyEncounter : MonoBehaviour
     [SerializeField]
     private Vector2 spawnRange;
 
+    //field for a list of obstacle tile positions
+    [SerializeField]
+    private List<Vector3Int> obstacleTiles;
+
+    //field for the level's tile map and its tilemap component
+    [SerializeField]
+    private GameObject levelTiles;
+    private Tilemap levelMap;
+
+    //field for obstacle tile base
+    [SerializeField]
+    private TileBase obstacleTile;
+
     //field to check if the player is in an encounter
     private bool inEncounter;
 
@@ -43,6 +57,9 @@ public class EnemyEncounter : MonoBehaviour
 
         //initialize living enemy list
         livingEnemies = new List<Enemy>();
+
+        //intialize tile map
+        levelMap = levelTiles.GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
@@ -53,6 +70,11 @@ public class EnemyEncounter : MonoBehaviour
         {
             //TODO end encounter
             Debug.Log("Encounter over");
+
+            for (int i = 0; i < obstacleTiles.Count; i++)
+            {
+                levelMap.SetTile(obstacleTiles[i], null);
+            }
 
             inEncounter = false;
 
@@ -160,6 +182,12 @@ public class EnemyEncounter : MonoBehaviour
 
         Debug.Log("Encounter start");
 
+        //close off openings with obstacle tiles
+        for(int i = 0; i < obstacleTiles.Count; i++)
+        {
+            levelMap.SetTile(obstacleTiles[i], obstacleTile);
+        }
+        
         //set inencounter to true
         inEncounter = true;
 
