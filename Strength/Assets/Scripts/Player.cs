@@ -44,9 +44,13 @@ public class Player : Entity
         set { animator.SetFloat("Speed", value); }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
+        animator.SetFloat("MissileChargeMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].castTime);
+        animator.SetFloat("MissileAttackMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].activeTime);
+        animator.SetFloat("MissileCooldownMult", 1 / world.abilityList.list[(int)Abilities.MagicMissile].coolDown);
     }
 
     // Update is called once per frame
@@ -93,7 +97,7 @@ public class Player : Entity
                 {
                     if (stamina >= minorCost)
                     {
-                        Attack(world.abilityList.list[0]);
+                        Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
                         stamina -= minorCost;
                         mana += minorCost;
                     }
@@ -102,7 +106,8 @@ public class Player : Entity
                 {
                     if (mana >= minorCost)
                     {
-                        Attack(world.abilityList.list[2]);
+                        Attack(world.abilityList.list[(int)Abilities.MagicMissile]);
+                        animator.SetTrigger("ShootMissile");
                         mana -= minorCost;
                         stamina += minorCost;
                     }
@@ -114,7 +119,7 @@ public class Player : Entity
                 {
                     if (stamina >= majorCost && physicalMajor)
                     {
-                        Attack(world.abilityList.list[1]);
+                        Attack(world.abilityList.list[(int)Abilities.SwordSlam]);
                         stamina -= majorCost;
                         mana += majorCost;
                         physicalMajor = false;
@@ -124,7 +129,7 @@ public class Player : Entity
                 {
                     if (mana >= majorCost && manaMajor)
                     {
-                        Attack(world.abilityList.list[3]);
+                        Attack(world.abilityList.list[(int)Abilities.NightmareBlade]);
                         mana -= majorCost;
                         stamina += majorCost;
                         manaMajor = false;
