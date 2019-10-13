@@ -67,6 +67,9 @@ public abstract class Entity : Interactable
         set { rigidbody.velocity = value; }
     }
 
+    /// <summary>
+    /// The players current location in 2D
+    /// </summary>
     public Vector2 Location
     {
         get { return transform.position; }
