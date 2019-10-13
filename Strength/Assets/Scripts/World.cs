@@ -12,6 +12,7 @@ public class World : MonoBehaviour
     }
     private Canvas canvas;
     public WorldState wS = WorldState.Physical;
+    public AbilityList abilityList;
     [SerializeField]
     protected Player player;
     [SerializeField]

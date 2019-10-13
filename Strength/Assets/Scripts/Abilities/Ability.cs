@@ -30,19 +30,16 @@ public abstract class Ability : ScriptableObject
     /// <summary>
     /// Activates abililty
     /// </summary>
+    /// <param name="entity">Entity using the ability</param>
     public virtual void Activate(Entity entity)
     {
         this.entity = entity;
         foreach(Collider2D c in entity.attackList)
         {
             Interactable i = c.GetComponent<Interactable>();
-            if(i is Entity)
+            if(i != null)
             {
                 i.TakeDamage(this);
-            }
-            else if(i is Projectile)
-            {
-                i.Die();
             }
             else
             {

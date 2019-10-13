@@ -95,7 +95,7 @@ public class Player : Entity
                 {
                     if (stamina >= minorCost)
                     {
-                        Attack(AbilityList.list[0]);
+                        Attack(world.abilityList.list[0]);
                         stamina -= minorCost;
                         mana += minorCost;
                     }
@@ -104,7 +104,7 @@ public class Player : Entity
                 {
                     if (mana >= minorCost)
                     {
-                        Attack(AbilityList.list[2]);
+                        Attack(world.abilityList.list[2]);
                         mana -= minorCost;
                         stamina += minorCost;
                     }
@@ -116,7 +116,7 @@ public class Player : Entity
                 {
                     if (stamina >= majorCost && physicalMajor)
                     {
-                        Attack(AbilityList.list[1]);
+                        Attack(world.abilityList.list[1]);
                         stamina -= majorCost;
                         mana += majorCost;
                         physicalMajor = false;
@@ -126,7 +126,7 @@ public class Player : Entity
                 {
                     if (mana >= majorCost && manaMajor)
                     {
-                        Attack(AbilityList.list[3]);
+                        Attack(world.abilityList.list[3]);
                         mana -= majorCost;
                         stamina += majorCost;
                         manaMajor = false;

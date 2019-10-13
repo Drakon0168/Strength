@@ -10,7 +10,7 @@ public class AbilityListEditor : Editor
 
     private void OnEnable()
     {
-        list = serializedObject.FindProperty("_list");
+        list = serializedObject.FindProperty("list");
     }
 
     public override void OnInspectorGUI()
