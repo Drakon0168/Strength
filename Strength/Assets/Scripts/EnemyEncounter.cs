@@ -29,7 +29,11 @@ public class EnemyEncounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initialize wave number
         waveNumber = 0;
+
+        //initialize living enemy list
+        livingEnemies = new List<Enemy>();
     }
 
     // Update is called once per frame
@@ -37,15 +41,20 @@ public class EnemyEncounter : MonoBehaviour
     {
         if(livingEnemies.Count == 0)
         {
+            //debug for wave changes
+            Debug.Log("wave cleared");
+
+            //create new wave of enemies
             CreateWave(encounter[waveNumber]);
 
+            //increase the wave count
             waveNumber++;
 
+            //end the encounter when all waves are clear
             if (waveNumber >= encounter.Count)
             {
                 //TODO end encounter
             }
-
         }
     }
 
@@ -55,30 +64,28 @@ public class EnemyEncounter : MonoBehaviour
         livingEnemies = new List<Enemy>();
 
         //add specified number of golems to living enemy list
-        for(int i = 0; i < enemies.w; i++)
+        for(int i = 0; i < enemies.x; i++)
         {
             livingEnemies.Add(Instantiate(enemyTypes[0], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
         }
 
         //add specified number of dark nights to living enemy list
-        for (int i = 0; i < enemies.x; i++)
+        for (int i = 0; i < enemies.y; i++)
         {
             livingEnemies.Add(Instantiate(enemyTypes[1], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
         }
 
         //add specified number of dark mages to living enemy list
-        for (int i = 0; i < enemies.y; i++)
+        for (int i = 0; i < enemies.z; i++)
         {
             livingEnemies.Add(Instantiate(enemyTypes[2], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
         }
 
-        //TODO add enemy four?
-        /*add specified number of E N E M Y  F O U R to living enemy list
-        for (int i = 0; i < enemies.z; i++)
+        //add specified number of test enemies to living enemy list
+        for (int i = 0; i < enemies.w; i++)
         {
             livingEnemies.Add(Instantiate(enemyTypes[3], GetRandomLocation(), Quaternion.identity).GetComponent<Enemy>());
         }
-        */
     }
 
     private Vector2 GetRandomLocation()
@@ -97,12 +104,10 @@ public class EnemyEncounter : MonoBehaviour
         foreach(RaycastHit2D spawnCheck in spawnCast)
         {
             //check if the raycast hit a wall, or else run the method again
-            /*
-            if(/*Raycast hit wall object)
+            if(spawnCheck.collider.tag == "Wall")
             {
                 return GetRandomLocation();
             }
-            */
         }
 
         return player.Location + spawnDirection * spawnRange;
