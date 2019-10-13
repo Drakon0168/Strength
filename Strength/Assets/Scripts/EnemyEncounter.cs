@@ -54,6 +54,8 @@ public class EnemyEncounter : MonoBehaviour
             //TODO end encounter
             Debug.Log("Encounter over");
 
+            inEncounter = false;
+
             Destroy(gameObject);
         }
 
@@ -71,14 +73,14 @@ public class EnemyEncounter : MonoBehaviour
                 //create new wave of enemies
                 CreateWave(encounter[waveNumber]);
             }
-        }
 
-        //remove an enemy if it's been destroyed
-        foreach(Enemy enemy in waveEnemies)
-        {
-            if(enemy == null)
+            //remove an enemy if it's been destroyed
+            foreach (Enemy enemy in waveEnemies)
             {
-                livingEnemies.Remove(enemy);
+                if (enemy == null)
+                {
+                    livingEnemies.Remove(enemy);
+                }
             }
         }
     }
@@ -122,6 +124,10 @@ public class EnemyEncounter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// method that spawns an object at a random distance away from the player 
+    /// </summary>
+    /// <returns> the enemy's spawn location </returns>
     private Vector2 GetRandomLocation()
     {
         //range of enemy spawn
@@ -145,5 +151,14 @@ public class EnemyEncounter : MonoBehaviour
         }
 
         return player.Location + spawnDirection * spawnRange;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        //set inencounter to true
+        inEncounter = true;
+
+        //spawn the first wave of enemies
+        CreateWave(encounter[waveNumber]);
     }
 }
