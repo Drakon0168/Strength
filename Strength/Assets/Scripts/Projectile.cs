@@ -14,21 +14,22 @@ public class Projectile : Interactable
 
     public override void TakeDamage(Ability attack)
     {
-        throw new System.NotImplementedException();
+        Die();
     }
 
     /// <summary>
     /// The projectile dies when it collides with something and then damages it
     /// </summary>
     /// <param name="collision">The thing being damaged</param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Entity>() != null)
+        if (collision.gameObject.GetComponent<Entity>() != null && collision.gameObject != ability.entity.gameObject)
         {
             collision.gameObject.GetComponent<Entity>().TakeDamage(ability);
-            Destroy(this.gameObject);
+            Die();
         }
-        
+        Debug.Log(collision.gameObject);
+
     }
 
     public void Init(Ranged ability)

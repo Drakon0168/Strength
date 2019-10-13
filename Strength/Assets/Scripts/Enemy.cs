@@ -17,6 +17,8 @@ public class Enemy : Entity
     private float attackRange;
     [SerializeField, Tooltip("The distance at which to start moving towards the player")]
     private float sightRange;
+    [SerializeField]
+    private float wanderDistance;
 
     private Vector2 targetPosition;
 
@@ -31,7 +33,9 @@ public class Enemy : Entity
                 StopMotion();
                 break;
             case EnemyStates.Searching:
-                //TODO: Wander around the immediate area
+                float vRandom = Random.value;
+                Vector2 target = new Vector2(wanderDistance * vRandom, wanderDistance * (1 - vRandom));
+                ApplyForce(target);
                 break;
             case EnemyStates.MoveToAttack:
                 Vector2 targetDirection = targetPosition - (Vector2)transform.position;
