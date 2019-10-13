@@ -8,7 +8,9 @@ public class Projectile : Interactable
     /// The ability that produced the 
     /// </summary>
     public Ranged ability;
-    Vector2 velocity;
+    [SerializeField]
+    private float flightSpeed;
+    private Vector2 velocity;
 
     public override void TakeDamage(Ability attack)
     {
@@ -51,13 +53,13 @@ public class Projectile : Interactable
         transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
 
         diff.Normalize();
-        velocity = diff * 1.5f;
+        velocity = diff * flightSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x + velocity.x, transform.position.y + velocity.y );
+        transform.position += (Vector3)velocity * Time.deltaTime;
     }
 
     private void OnBecameInvisible()
