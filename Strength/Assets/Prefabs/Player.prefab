@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6dc03dbf8d0f742b3aaa1dd936e284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
+  health: 100
   moveSpeed: 20
   magicResistance: 0
   physicalResistance: 0
@@ -143,3 +144,12 @@ MonoBehaviour:
   abilities: {fileID: 0}
   friction: 0.12
   maxFriction: 0.35
+  attackCollider: {fileID: 0}
+  attackList: []
+  mana: 50
+  stamina: 50
+  maxMana: 100
+  maxStamina: 100
+  world: {fileID: 0}
+  minorCost: 10
+  majorCost: 60

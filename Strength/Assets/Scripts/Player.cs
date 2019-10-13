@@ -5,19 +5,19 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField]
-    private int mana;
+    private float mana;
     [SerializeField]
-    private int stamina;
+    private float stamina;
     [SerializeField]
-    private int maxMana;
+    private float maxMana;
     [SerializeField]
-    private int maxStamina;
+    private float maxStamina;
     [SerializeField]
     World world;
     [SerializeField]
-    private int minorCost;
+    private float minorCost;
     [SerializeField]
-    private int majorCost;
+    private float majorCost;
     private bool manaMajor = true;
     private bool physicalMajor = true;
     private State state = new State();
@@ -113,11 +113,13 @@ public class Player : Entity
         {
             if (world.wS == World.WorldState.Physical)
             {
-                if(stamina >= majorCost && physicalMajor)
-                Attack(AbilityList.list[1]);
-                stamina -= majorCost;
-                mana += majorCost;
-                physicalMajor = false;
+                if (stamina >= majorCost && physicalMajor)
+                {
+                    Attack(AbilityList.list[1]);
+                    stamina -= majorCost;
+                    mana += majorCost;
+                    physicalMajor = false;
+                }
             }
             else
             {
@@ -142,6 +144,7 @@ public class Player : Entity
         {
 
         }
+        UpdateUI();
     }
 
     /// <summary>
@@ -176,6 +179,21 @@ public class Player : Entity
         if(transformation != null)
         {
             transformation();
+        }
+    }
+
+    private void UpdateUI()
+    {
+        world.health.fillAmount = health / maxHealth;
+        if(world.wS == World.WorldState.Physical)
+        {
+            world.topBar.fillAmount = stamina / maxStamina;
+            world.bottomBar.fillAmount = mana / maxMana;
+        }
+        else
+        {
+            world.topBar.fillAmount = mana / maxMana;
+            world.bottomBar.fillAmount = stamina / maxStamina;
         }
     }
 

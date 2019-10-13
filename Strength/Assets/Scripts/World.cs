@@ -14,6 +14,12 @@ public class World : MonoBehaviour
     public WorldState wS = WorldState.Physical;
     [SerializeField]
     protected Player player;
+    [SerializeField]
+    public Image health;
+    [SerializeField]
+    public Image topBar;
+    [SerializeField]
+    public Image bottomBar;
 
     private void Awake()
     {

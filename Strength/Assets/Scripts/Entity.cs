@@ -33,6 +33,7 @@ public abstract class Entity : Interactable
     protected float maxFriction = .35f;
     [SerializeField]
     protected Collider2D attackCollider;
+    [SerializeField]
 
     public List<Collider2D> attackList = new List<Collider2D>();
     protected new Rigidbody2D rigidbody;

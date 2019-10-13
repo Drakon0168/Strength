@@ -7,8 +7,9 @@ public abstract class Interactable : MonoBehaviour
 {
     [Header("Interactable")]
     [SerializeField]
-    protected int maxHealth = 0;
-    protected int health = 0;
+    protected float maxHealth = 0;
+    [SerializeField]
+    protected float health = 0;
 
     /// <summary>
     /// The current health of the character
