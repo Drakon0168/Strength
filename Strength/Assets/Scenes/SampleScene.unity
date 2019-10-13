@@ -1420,7 +1420,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 176, y: 0}
-  m_SizeDelta: {x: 402.07, y: 0}
+  m_SizeDelta: {x: 492.57013, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1820217207
 MonoBehaviour:
@@ -1579,6 +1579,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1912406093}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 174249116}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: topBar
+      value: 
+      objectReference: {fileID: 190191034}
+    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
+        type: 3}
+      propertyPath: bottomBar
+      value: 
+      objectReference: {fileID: 833370411}
     - target: {fileID: 6943217184444884496, guid: 0938d3d613fe42a45a6655d29e608753,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1634,25 +1654,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1912406093}
-    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
-        type: 3}
-      propertyPath: health
-      value: 
-      objectReference: {fileID: 174249116}
-    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
-        type: 3}
-      propertyPath: topBar
-      value: 
-      objectReference: {fileID: 190191034}
-    - target: {fileID: 6943217184444884497, guid: 0938d3d613fe42a45a6655d29e608753,
-        type: 3}
-      propertyPath: bottomBar
-      value: 
-      objectReference: {fileID: 833370411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0938d3d613fe42a45a6655d29e608753, type: 3}
