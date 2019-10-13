@@ -65,22 +65,7 @@ public class EnemyEncounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //end the encounter when all waves are clear
-        if (waveNumber >= encounter.Count)
-        {
-            Debug.Log("Encounter over");
-
-            //remove obstacle tiles
-            for (int i = 0; i < obstacleTiles.Count; i++)
-            {
-                levelMap.SetTile(obstacleTiles[i], null);
-            }
-
-            inEncounter = false;
-
-            Destroy(gameObject);
-        }
-
+        
         //spawn the next wave when all living enemies are destroyed
         if(inEncounter == true)
         {
@@ -92,8 +77,26 @@ public class EnemyEncounter : MonoBehaviour
                 //increase the wave count
                 waveNumber++;
 
-                //create new wave of enemies
-                CreateWave(encounter[waveNumber]);
+                //end the encounter when all waves are clear
+                if (waveNumber >= encounter.Count)
+                {
+                    Debug.Log("Encounter over");
+
+                    //remove obstacle tiles
+                    for (int i = 0; i < obstacleTiles.Count; i++)
+                    {
+                        levelMap.SetTile(obstacleTiles[i], null);
+                    }
+
+                    inEncounter = false;
+
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    //create new wave of enemies
+                    CreateWave(encounter[waveNumber]);
+                }
             }
 
             //remove an enemy if it's been destroyed
@@ -152,49 +155,32 @@ public class EnemyEncounter : MonoBehaviour
     /// <returns> the enemy's spawn location </returns>
     private Vector2 GetRandomLocation()
     {
-        //range of enemy spawn
-        float enemyRange = Random.Range(spawnRange.x, spawnRange.y);
+        //get encounter object's position
+        Vector3 spawnCenter = gameObject.transform.position;
+        float spawnWidth = GetComponent<BoxCollider2D>().bounds.extents.x;
+        float spawnHeight = GetComponent<BoxCollider2D>().bounds.extents.y;
+        Vector2 spawnOffset = GetComponent<BoxCollider2D>().offset;
 
-        //angle of spawn
-        float spawnAngle = Random.Range(0, 360) * Mathf.Deg2Rad;
-
-        //Direction of spawn raycast
-        Vector2 spawnDirection = new Vector2(Mathf.Cos(spawnAngle), Mathf.Sin(spawnAngle));
-
-        RaycastHit2D[] spawnCast = Physics2D.RaycastAll(player.Location, spawnDirection, enemyRange);
-
-        foreach(RaycastHit2D spawnCheck in spawnCast)
-        {
-            Debug.DrawLine(player.transform.position, spawnCheck.point, Color.green, 5);
-            //check if the raycast hit a wall, or else run the method again
-            if (spawnCheck.collider.gameObject == levelTiles)
-            {
-                Debug.Log("rechecking collision");
-                return GetRandomLocation();
-            }
-        }
-
-        Debug.DrawLine(player.transform.position, player.Location + spawnDirection * spawnRange, Color.green, 5);
-        return player.Location + spawnDirection * spawnRange;
+        return (Vector2) spawnCenter + spawnOffset + new Vector2(Random.value * spawnWidth, Random.value * spawnHeight);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        //disable object's collider
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        Debug.Log("Encounter start");
-
-        //close off openings with obstacle tiles
-        for(int i = 0; i < obstacleTiles.Count; i++)
+        if(inEncounter == false)
         {
-            levelMap.SetTile(obstacleTiles[i], obstacleTile);
-        }
-        
-        //set inencounter to true
-        inEncounter = true;
+            Debug.Log("Encounter start");
 
-        //spawn the first wave of enemies
-        CreateWave(encounter[waveNumber]);
+            //close off openings with obstacle tiles
+            for (int i = 0; i < obstacleTiles.Count; i++)
+            {
+                levelMap.SetTile(obstacleTiles[i], obstacleTile);
+            }
+
+            //set inencounter to true
+            inEncounter = true;
+
+            //spawn the first wave of enemies
+            CreateWave(encounter[waveNumber]);
+        }
     }
 }
