@@ -12,8 +12,15 @@ public class World : MonoBehaviour
     }
     private Canvas canvas;
     public WorldState wS = WorldState.Physical;
+    public AbilityList abilityList;
     [SerializeField]
     protected Player player;
+    [SerializeField]
+    public Image health;
+    [SerializeField]
+    public Image topBar;
+    [SerializeField]
+    public Image bottomBar;
 
     private void Awake()
     {

@@ -30,6 +30,7 @@ public abstract class Ability : ScriptableObject
     /// <summary>
     /// Activates abililty
     /// </summary>
+    /// <param name="entity">Entity using the ability</param>
     public virtual void Activate(Entity entity)
     {
         this.entity = entity;
