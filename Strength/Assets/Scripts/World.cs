@@ -12,10 +12,17 @@ public class World : MonoBehaviour
     }
     private Canvas canvas;
     public WorldState wS = WorldState.Physical;
+    [SerializeField]
+    protected Player player;
 
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
+    }
+
+    private void Start()
+    {
+        player.transformation += ChangeWorld;
     }
 
     /// <summary>
@@ -26,14 +33,14 @@ public class World : MonoBehaviour
         if(wS == WorldState.Physical)
         {
             wS = WorldState.Magical;
-            canvas.GetComponent<Image>().color = new Color(108, 47, 31);
+            canvas.GetComponent<Image>().color = new Color32(108, 47, 31, 119);
             canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToMagic");
             //TODO: Change screen color
         }
         else
         {
             wS = WorldState.Physical;
-            canvas.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            canvas.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
             canvas.GetComponentInChildren<Animator>().SetTrigger("switchedToStrength");
             //TODO: Change screen color
         }
