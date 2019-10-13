@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nightmare Blade
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
-  attackModifier: 0
+  attackModifier: 5
   castTime: 0
   activeTime: 0
   coolDown: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword Swipe
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
-  attackModifier: 0
+  attackModifier: 1
   castTime: 0.1
   activeTime: 0.1
   coolDown: 0.2
