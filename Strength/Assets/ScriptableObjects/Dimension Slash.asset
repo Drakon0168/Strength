@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dimension Slash
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
-  attackModifier: 0.3
-  castTime: 0
-  activeTime: 0
-  coolDown: 0
+  attackModifier: 10
+  castTime: 0.25
+  activeTime: 0.33
+  coolDown: 0.25
   damageType: 0
   knockback: 55

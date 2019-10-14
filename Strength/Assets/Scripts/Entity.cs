@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// List of all abilities in the game
@@ -35,6 +36,9 @@ public abstract class Entity : Interactable
     protected AttackCollider attackCollider;
     [SerializeField]
     protected bool hasAttackBox = false; // Needed fpr melee attacks
+    [SerializeField]
+    protected CinemachineVirtualCamera vcam;
+
 
 
     [HideInInspector]
