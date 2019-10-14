@@ -40,7 +40,7 @@ public class Projectile : Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         transform.position += (Vector3)velocity * Time.deltaTime;
     }

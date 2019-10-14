@@ -35,12 +35,12 @@ public class World : MonoBehaviour
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
+        canvasAnimator = canvas.GetComponent<Animator>();
     }
 
     private void Start()
     {
         player.transformation += ChangeWorld;
-        canvasAnimator = canvas.GetComponent<Animator>();
         hudAnimator = hud.GetComponent<Animator>();
     }
 

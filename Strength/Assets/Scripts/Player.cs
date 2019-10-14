@@ -57,6 +57,10 @@ public class Player : Entity
         animator.SetFloat("SwipeChargeMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].castTime);
         animator.SetFloat("SwipeAttackMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].activeTime);
         animator.SetFloat("SwipeCooldownMult", 1 / world.abilityList.list[(int)Abilities.SwordSwipe].coolDown);
+
+        world.canvasAnimator.SetFloat("StartTimeMult", 1 / world.abilityList.list[(int)Abilities.SwordSlam].castTime);
+        world.canvasAnimator.SetFloat("MidTimeMult", 1 / world.abilityList.list[(int)Abilities.SwordSlam].activeTime);
+        world.canvasAnimator.SetFloat("EndTimeMult", 1 / world.abilityList.list[(int)Abilities.SwordSlam].coolDown);
     }
 
     // Update is called once per frame
