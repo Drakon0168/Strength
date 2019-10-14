@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Nightmare Blade
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
-  attackModifier: 0.3
-  castTime: 0
-  activeTime: 0
-  coolDown: 0
-  damageType: 0
+  attackModifier: 1
+  castTime: 0.25
+  activeTime: 0.33
+  coolDown: 0.25
+  damageType: 1
   knockback: 55
+  swordPrefab: {fileID: 556528921822361609, guid: 278db44f29651b64cb19530d3725db28,
+    type: 3}
+  ultLength: 3
+  ultRadius: 10
