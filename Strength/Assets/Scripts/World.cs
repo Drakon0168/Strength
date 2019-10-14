@@ -10,11 +10,11 @@ public class World : MonoBehaviour
         Physical,
         Magical
     }
-    private Canvas canvas;
+    public Canvas canvas;
     [SerializeField]
     private GameObject hud;
 
-    private Animator canvasAnimator;
+    public Animator canvasAnimator;
     private Animator hudAnimator;
 
     public WorldState wS = WorldState.Physical;
