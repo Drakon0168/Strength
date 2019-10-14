@@ -159,13 +159,17 @@ public class Player : Entity
         }
 
         // Activates ability after getting list of attack targets (for physical0
-        if (world.abilityList.list[abilityNum].damageType == Ability.DamageType.Magical)
+        if (world.abilityList.list[abilityNum] is Ranged)
         {
             if (buttonPressed)
             {
                 Attack(world.abilityList.list[abilityNum]);
                 buttonPressed = false;
             }
+        }
+        else if(world.abilityList.list[abilityNum] is Ult)
+        {
+            Attack(world.abilityList.list[abilityNum]);
         }
         else
         {
