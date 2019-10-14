@@ -18,4 +18,5 @@ MonoBehaviour:
   activeTime: 0
   coolDown: 0
   damageType: 1
+  knockback: 0
   projectile: {fileID: 0}
