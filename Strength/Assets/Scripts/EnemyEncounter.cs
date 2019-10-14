@@ -14,7 +14,7 @@ public class EnemyEncounter : MonoBehaviour
     private List<GameObject> enemyTypes;
 
     //list of living enemies
-    private List<Enemy> livingEnemies;
+    public List<Enemy> livingEnemies;
 
     //list of all enemies in a wave
     private List<Enemy> waveEnemies;
