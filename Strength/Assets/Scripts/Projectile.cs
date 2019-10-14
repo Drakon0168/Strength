@@ -33,19 +33,10 @@ public class Projectile : Interactable
 
     }
 
-    public void Init(Ranged ability)
+    public void Init(Ranged ability, Vector2 direction)
     {
         this.ability = ability;
-        transform.position = ability.entity.transform.position;
-
-        Vector2 mP = Input.mousePosition;
-        mP = Camera.main.ScreenToWorldPoint(mP);
-        Vector2 diff = mP - ability.entity.Location;
-        float angle = Mathf.Atan2(diff.y, diff.x);
-        transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
-
-        diff.Normalize();
-        velocity = diff * flightSpeed;
+        velocity = direction * flightSpeed;
     }
 
     // Update is called once per frame

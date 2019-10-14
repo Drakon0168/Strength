@@ -22,14 +22,6 @@ public class EnemyEncounter : MonoBehaviour
     //current wave number
     private int waveNumber;
 
-    //field for the player character
-    [SerializeField]
-    private Player player;
-
-    //field for the minimum and maximum range of enemy spawning
-    [SerializeField]
-    private Vector2 spawnRange;
-
     //field for a list of obstacle tile positions
     [SerializeField]
     private List<Vector3Int> obstacleTiles;
@@ -86,6 +78,8 @@ public class EnemyEncounter : MonoBehaviour
                     for (int i = 0; i < obstacleTiles.Count; i++)
                     {
                         levelMap.SetTile(obstacleTiles[i], null);
+                        levelTiles.SetActive(false);
+                        levelTiles.SetActive(true);
                     }
 
                     inEncounter = false;
