@@ -399,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597361815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.599989, y: 0.12686849, z: -10}
+  m_LocalPosition: {x: -11.59999, y: 0.12686849, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 381545172}
@@ -638,7 +638,12 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 890822334, guid: ce43762a0e9153d43bf8c15b58ee3d1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 890822334, guid: ce43762a0e9153d43bf8c15b58ee3d1a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce43762a0e9153d43bf8c15b58ee3d1a, type: 3}
 --- !u!114 &1912406093 stripped
 MonoBehaviour:
@@ -1083,25 +1088,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -4, y: -2, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 21, y: -2, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -4, y: -1, z: 0}
     second:
       m_TileIndex: 0
       m_TileSpriteIndex: 0
@@ -1337,14 +1324,14 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 66
+  - m_RefCount: 64
     m_Data: {fileID: 11400000, guid: 2b4b0f31fc30e0345807cde37db0aca3, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 66
+  - m_RefCount: 64
     m_Data: {fileID: -5759658900458002767, guid: f0d75e64c3a7e67488d2a215170205ed,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 66
+  - m_RefCount: 64
     m_Data:
       e00: 1
       e01: 0
@@ -1363,12 +1350,12 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 66
+  - m_RefCount: 64
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -4, y: -11, z: 0}
-  m_Size: {x: 26, y: 11, z: 1}
+  m_Origin: {x: -22, y: -11, z: 0}
+  m_Size: {x: 44, y: 13, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1408,44 +1395,38 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1933476897}
     m_ColliderPaths:
-    - - X: 219999971
+    - - X: 219999942
         Y: -110000000
-      - X: 219999971
+      - X: 219999942
         Y: 0
-      - X: -40000000
-        Y: -29
-      - X: -39999971
-        Y: -20000000
-      - X: -30000000
-        Y: -19999971
-      - X: -29999971
+      - X: -29999900
+        Y: -57
+      - X: -29999871
         Y: -10000000
       - X: 210000000
-        Y: -10000029
-      - X: 209999971
+        Y: -10000058
+      - X: 209999942
         Y: -100000000
       - X: -30000000
-        Y: -99999971
-      - X: -30000029
+        Y: -99999942
+      - X: -30000058
         Y: -60000000
       - X: -40000000
-        Y: -60000029
-      - X: -39999971
+        Y: -60000058
+      - X: -39999942
         Y: -110000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 21.999996, y: 0}
-      - {x: -4, y: -0.0000029}
-      - {x: -3.9999971, y: -2}
-      - {x: -3, y: -1.9999973}
-      - {x: -2.9999971, y: -1}
-      - {x: 21, y: -1.0000029}
-      - {x: 20.999996, y: -10}
-      - {x: -3, y: -9.999997}
-      - {x: -3.0000029, y: -6}
-      - {x: -4, y: -6.000003}
-      - {x: -3.9999971, y: -11}
-      - {x: 21.999996, y: -11}
+    - - {x: 21.999994, y: 0}
+      - {x: -2.99999, y: -0.0000057}
+      - {x: -2.9999871, y: -1}
+      - {x: 21, y: -1.0000058}
+      - {x: 20.999994, y: -10}
+      - {x: -3, y: -9.999994}
+      - {x: -3.0000057, y: -6}
+      - {x: -4, y: -6.0000057}
+      - {x: -3.9999945, y: -11}
+      - {x: 21.999994, y: -11}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
 --- !u!50 &1933476896

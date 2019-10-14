@@ -22,10 +22,6 @@ public class EnemyEncounter : MonoBehaviour
     //current wave number
     private int waveNumber;
 
-    //field for the player character
-    [SerializeField]
-    private Player player;
-
     //field for a list of obstacle tile positions
     [SerializeField]
     private List<Vector3Int> obstacleTiles;
