@@ -35,24 +35,29 @@ public abstract class Ability : ScriptableObject
     public virtual void Activate(Entity entity)
     {
         this.entity = entity;
+
         if (entity is Player)
         {
             for (int i = 0; i < entity.AttackList.Count; i++)
             {
-                entity.AttackList[i].TakeDamage(this);
                 entity.AttackList[i].ApplyForce((Input.mousePosition - entity.transform.position).normalized * knockback);
+                entity.AttackList[i].TakeDamage(this);
             }
+            entity.AttackList.Clear();
         }
         else
         {
-            Enemy e = entity as Enemy;
-            if (entity.AttackList.Contains(e.player))
+            if (damageType == DamageType.Physical)
             {
-                e.player.TakeDamage(this);
-                e.player.ApplyForce(entity.Velocity.normalized * knockback);
+                Enemy e = entity as Enemy;
+                if (entity.AttackList.Contains(e.player))
+                {
+                    e.player.ApplyForce(entity.Velocity.normalized * knockback);
+                    e.player.TakeDamage(this);
+                }
+                entity.AttackList.Clear();
             }
         }
-        entity.AttackList.Clear();
     }
 
     public virtual void Activate(Entity entity, Vector2 pos)

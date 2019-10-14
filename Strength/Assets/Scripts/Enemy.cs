@@ -25,6 +25,8 @@ public class Enemy : Entity
     static World world;
 
     public Player player;
+
+    public int projectilesLaunched = 0;
     private EnemyStates currentState;
 
     protected override void Awake()
@@ -76,8 +78,8 @@ public class Enemy : Entity
                 if(targetDistance < attackRange)
                 {
                     //TODO: Start the attack
-                    Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
                     currentState = EnemyStates.Attacking;
+                    projectilesLaunched = 0;
                     animator.SetTrigger("Attack");
                 }
                 else
@@ -89,10 +91,7 @@ public class Enemy : Entity
                 }
                 break;
         }
-        if (attackBoxActive)
-        {
-            Attack(world.abilityList.list[(int)attack]);
-        }
+        Attack(world.abilityList.list[(int)attack]);
 
         base.Update();
     }
@@ -110,13 +109,20 @@ public class Enemy : Entity
 
     protected override void Attack(Ability ability)
     {
-        if(ability is Ranged)
+        if (ability is Ranged)
         {
-            //TODO Make it so we can pass in a location for the ranged location
+            projectilesLaunched++;
+            if (projectilesLaunched <= 1)
+            {
+                ability.Activate(this, player.transform.position);
+            }
         }
         else
         {
-            ability.Activate(this);
+            if (attackBoxActive)
+            {
+                ability.Activate(this);
+            }
         }
     }
 }
