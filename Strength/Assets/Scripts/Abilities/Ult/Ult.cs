@@ -12,6 +12,7 @@ public class Ult : Ability
 
     public override void Activate(Entity entity)
     {
+        base.Activate(entity);
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (Enemy e in enemies)
         {
