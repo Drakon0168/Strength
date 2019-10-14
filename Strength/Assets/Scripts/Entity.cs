@@ -114,6 +114,8 @@ public abstract class Entity : Interactable
         {
             Health -= physicalResistance * attack.CalcDamage();
         }
+
+        //vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = NoiseSettings.;
     }
 
     /// <summary>
