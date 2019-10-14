@@ -40,7 +40,7 @@ public abstract class Ability : ScriptableObject
             for (int i = 0; i < entity.AttackList.Count; i++)
             {
                 entity.AttackList[i].TakeDamage(this);
-                entity.AttackList[i].ApplyForce(entity.Velocity.normalized * knockback);
+               // entity.AttackList[i].ApplyForce(entity.Velocity.normalized * knockback);
             }
         }
         else
