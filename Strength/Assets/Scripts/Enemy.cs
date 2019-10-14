@@ -73,7 +73,6 @@ public class Enemy : Entity
                 if(targetDistance < attackRange)
                 {
                     //TODO: Start the attack
-                    Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
                     currentState = EnemyStates.Attacking;
                     animator.SetTrigger("Attack");
                 }
@@ -85,6 +84,10 @@ public class Enemy : Entity
                     animator.SetFloat("DirectionY", targetDirection.y);
                 }
                 break;
+        }
+        if (attackBoxActive)
+        {
+            Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
         }
 
         base.Update();

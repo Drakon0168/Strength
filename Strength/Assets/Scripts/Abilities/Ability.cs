@@ -51,6 +51,11 @@ public abstract class Ability : ScriptableObject
         entity.AttackList.Clear();
     }
 
+    public virtual void Activate(Entity entity, Vector2 pos)
+    {
+        Activate(entity);
+    }
+
     /// <summary>
     /// Calculates ya damage
     /// </summary>
