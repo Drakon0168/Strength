@@ -8,8 +8,12 @@ public class Ult : Ability
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    public override void Activate(Entity entity)
+    {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        foreach(Enemy e in enemies)
+        foreach (Enemy e in enemies)
         {
             e.TakeDamage(this);
         }
