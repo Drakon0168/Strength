@@ -582,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
@@ -592,12 +592,12 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[0].x
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[1].x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
@@ -732,16 +732,26 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[0].y
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[0].z
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[0].w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[1].y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[1].z
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -824,7 +834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627597667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.048750877, y: -0.40757844, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1096,7 +1106,7 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[1].x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
@@ -1150,6 +1160,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5189141163954212560, guid: 7f3ebff777dd67d428871d4f6b85e9a2,
         type: 3}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[1].y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8440263f2608cb140afe9a87a0d351d1, type: 3}
 --- !u!1 &1140419860 stripped
@@ -50074,7 +50099,7 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[0].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
@@ -50237,7 +50262,7 @@ PrefabInstance:
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
       propertyPath: encounter.Array.data[1].w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
         type: 3}
@@ -50251,6 +50276,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5189141163954212560, guid: 7f3ebff777dd67d428871d4f6b85e9a2,
         type: 3}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632865830520403950, guid: 8440263f2608cb140afe9a87a0d351d1,
+        type: 3}
+      propertyPath: encounter.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8440263f2608cb140afe9a87a0d351d1, type: 3}
 --- !u!114 &1979714322 stripped
