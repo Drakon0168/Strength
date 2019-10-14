@@ -9,6 +9,7 @@ TagManager:
   - TopBar
   - Wall
   - Enemy
+  - cinemachine
   layers:
   - Default
   - TransparentFX
