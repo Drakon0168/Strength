@@ -124,12 +124,13 @@ public abstract class Entity : Interactable
         float shakeTime = 0.3f;
 
         Debug.Log("screenshake");
+        Debug.Log(shakeTime);
         vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 3;
         vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 3;
 
         do
         {
-            shakeTime = shakeTime -  Time.deltaTime;
+            shakeTime = shakeTime - 1 *  Time.deltaTime;
         }
         while (shakeTime > 0);
 
