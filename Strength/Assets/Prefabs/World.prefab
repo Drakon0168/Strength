@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71121405bf93ab04fb4fc4f6db2fc41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   hud: {fileID: 0}
+  canvasAnimator: {fileID: 0}
   wS: 0
   abilityList: {fileID: 11400000, guid: 5aa017bcffe48df42bb85814d176f328, type: 2}
   player: {fileID: 0}

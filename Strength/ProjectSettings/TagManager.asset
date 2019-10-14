@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Dig Bick Energy
+    uniqueID: 1733875033
+    locked: 0
   - name: TrailLayer
     uniqueID: 2929265543
     locked: 0
