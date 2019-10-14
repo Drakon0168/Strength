@@ -18,3 +18,4 @@ MonoBehaviour:
   activeTime: 0.1
   coolDown: 0.2
   damageType: 0
+  knockback: 300

@@ -26,6 +26,7 @@ public class Projectile : Interactable
         if (collision.gameObject.GetComponent<Entity>() != null && collision.gameObject != ability.entity.gameObject)
         {
             collision.gameObject.GetComponent<Entity>().TakeDamage(ability);
+            collision.gameObject.GetComponent<Entity>().ApplyForce(velocity.normalized * ability.knockback);
             Die();
         }
         Debug.Log(collision.gameObject);
