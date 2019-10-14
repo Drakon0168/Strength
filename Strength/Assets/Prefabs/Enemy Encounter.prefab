@@ -45,9 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounter: []
-  enemyTypes: []
+  enemyTypes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   player: {fileID: 0}
   spawnRange: {x: 0, y: 0}
+  obstacleTiles: []
+  levelTiles: {fileID: 0}
+  obstacleTile: {fileID: 0}
 --- !u!61 &7307373231373060493
 BoxCollider2D:
   m_ObjectHideFlags: 0

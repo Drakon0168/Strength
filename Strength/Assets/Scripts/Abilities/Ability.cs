@@ -20,6 +20,8 @@ public abstract class Ability : ScriptableObject
 
     public DamageType damageType; // Type of damage
 
+    public int knockback = 55;
+
     public enum DamageType
     {
         Physical,
@@ -38,6 +40,7 @@ public abstract class Ability : ScriptableObject
             for (int i = 0; i < entity.AttackList.Count; i++)
             {
                 entity.AttackList[i].TakeDamage(this);
+                entity.AttackList[i].ApplyForce(entity.Velocity.normalized * knockback);
             }
         }
         else
