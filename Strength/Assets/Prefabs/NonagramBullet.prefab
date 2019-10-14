@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4457890710463030357}
   - component: {fileID: 1223224251735920560}
   - component: {fileID: 1193090304003038131}
+  - component: {fileID: -2960114122625922632}
   m_Layer: 0
   m_Name: NonagramBullet
   m_TagString: Untagged
@@ -222,7 +223,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556528921822361609}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -241,3 +242,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.21875}
   m_EdgeRadius: 0
+--- !u!114 &-2960114122625922632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556528921822361609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519f572dcb6b7294ab5653af02b58424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 10
+  ability: {fileID: 0}
+  flightSpeed: 0
+  points: []
+  segmentTime: 0

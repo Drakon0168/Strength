@@ -12,71 +12,44 @@ public class NightmareBlade : Ult
     [SerializeField]
     private float ultRadius;
 
-    private List<GameObject> swords;
     private List<Vector2> nonagramPositions;
     private float timer = 0;
     private bool ulting = false;
     private int index = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Activate(Entity entity)
     {
-        float angle = (Random.value * Mathf.PI * 2) / 9;
+        base.Activate(entity);
+
+        float angle = (Mathf.PI * 2) / 9;
 
         for (int i = 0; i < 9; i++)
         {
             float currentAngle = angle * i;
             nonagramPositions.Add(new Vector2(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle)) * ultRadius);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (ulting)
+        for (int i = 0; i < nonagramPositions.Count; i++)
         {
-            timer += Time.deltaTime;
-            index = Mathf.FloorToInt(ultLength / timer);
+            NonagramBlade projectile = Instantiate(swordPrefab, entity.transform.position + (Vector3)nonagramPositions[i], Quaternion.identity, entity.transform).GetComponent<NonagramBlade>();
+            int p1 = i;
+            int p2 = i + 3;
+            int p3 = i + 6;
 
-            float sectionPercent = (timer - (index * (ultLength / 3))) / (timer - ((index + 1) * (ultLength / 3)));
-
-            for (int i = 0; i < 9; i++)
+            if(p2 >= 9)
             {
-                Vector2 nextPosition = Vector2.zero;
-
-                if (i + 3 > 9)
-                {
-                    nextPosition = nonagramPositions[i - 6];
-                }
-                else
-                {
-                    nextPosition = nonagramPositions[i + 3];
-                }
-
-                Vector2 targetPosition = nonagramPositions[i] + (nonagramPositions[i + 3] - nonagramPositions[i]);
-                swords[i].transform.position = targetPosition;
+                p2 -= 9;
             }
 
-            if (timer >= ultLength)
+            if (p3 >= 9)
             {
-                ulting = false;
-
-                for (int i = swords.Count - 1; i >= 0; i++)
-                {
-                    Destroy(swords[i]);
-                    swords.Remove(swords[i]);
-                }
+                p3 -= 9;
             }
-        }
-    }
 
-    public override void Activate(Entity entity)
-    {
-        base.Activate(entity);
-
-        foreach (Vector2 pos in nonagramPositions)
-        {
-            swords.Add(Instantiate(swordPrefab, pos, Quaternion.identity, entity.transform));
+            projectile.points = new Vector2[3] { nonagramPositions[p1], nonagramPositions[p2], nonagramPositions[p3] };
+            projectile.segmentTime = ultLength / 3;
+            projectile.parent = entity.transform;
+            Destroy(projectile.gameObject, ultLength);
         }
     }
 }
