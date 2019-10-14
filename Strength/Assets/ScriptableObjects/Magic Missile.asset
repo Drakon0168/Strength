@@ -18,5 +18,6 @@ MonoBehaviour:
   activeTime: 0.33
   coolDown: 0.25
   damageType: 1
+  knockback: 150
   projectile: {fileID: 1672952382906382496, guid: eab3df2c5857d0041a65d3132e479b86,
     type: 3}
