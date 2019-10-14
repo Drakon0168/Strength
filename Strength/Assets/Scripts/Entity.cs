@@ -19,19 +19,19 @@ public abstract class Entity : Interactable
 {
     [Header("Entity")]
     [SerializeField]
-    protected float moveSpeed = 20f;
+    protected float moveSpeed;
     [SerializeField]
-    protected float magicResistance = .5f;
+    protected float magicResistance;
     [SerializeField]
-    protected float physicalResistance = .5f;
+    protected float physicalResistance;
     [SerializeField]
-    protected float baseDamage = 1;
+    protected float baseDamage;
     [SerializeField]
     protected AbilityList abilities; // Use the ability list scriptableObject from the Abilities folder
     [SerializeField]
-    protected float friction = .12f;
+    protected float friction;
     [SerializeField]
-    protected float maxFriction = .35f;
+    protected float maxFriction;
     [SerializeField]
     protected AttackCollider attackCollider;
     [SerializeField]
