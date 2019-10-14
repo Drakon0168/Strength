@@ -19,6 +19,9 @@ public class Enemy : Entity
     private float sightRange;
     [SerializeField]
     private float wanderDistance;
+    [SerializeField, Tooltip("The attack that this enemy uses")]
+    private Abilities attack;
+
     static World world;
 
     public Player player;
@@ -73,6 +76,7 @@ public class Enemy : Entity
                 if(targetDistance < attackRange)
                 {
                     //TODO: Start the attack
+                    Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
                     currentState = EnemyStates.Attacking;
                     animator.SetTrigger("Attack");
                 }
@@ -87,7 +91,7 @@ public class Enemy : Entity
         }
         if (attackBoxActive)
         {
-            Attack(world.abilityList.list[(int)Abilities.SwordSwipe]);
+            Attack(world.abilityList.list[(int)attack]);
         }
 
         base.Update();
@@ -106,6 +110,13 @@ public class Enemy : Entity
 
     protected override void Attack(Ability ability)
     {
-        ability.Activate(this);
+        if(ability is Ranged)
+        {
+            //TODO Make it so we can pass in a location for the ranged location
+        }
+        else
+        {
+            ability.Activate(this);
+        }
     }
 }
