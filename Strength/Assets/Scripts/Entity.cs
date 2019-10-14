@@ -115,7 +115,26 @@ public abstract class Entity : Interactable
             Health -= physicalResistance * attack.CalcDamage();
         }
 
-        //vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = NoiseSettings.;
+        if(vcam == null)
+        {
+            vcam = GameObject.FindGameObjectWithTag("cinemachine").GetComponent<CinemachineVirtualCamera>();
+        }
+
+        //shake the screen
+        float shakeTime = 2f;
+
+        Debug.Log("screenshake");
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 3;
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 3;
+
+        shakeTime -= Time.deltaTime;
+
+        if(shakeTime <= 0)
+        {
+            Debug.Log("Screen Reset");
+            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+        }
     }
 
     /// <summary>
