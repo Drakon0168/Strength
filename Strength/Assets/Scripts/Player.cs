@@ -134,6 +134,7 @@ public class Player : Entity
                         stamina -= majorCost;
                         mana += majorCost;
                         physicalMajor = false;
+                        world.canvasAnimator.SetTrigger("sevenSword");
                     }
                 }
                 else
