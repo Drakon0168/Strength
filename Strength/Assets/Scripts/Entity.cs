@@ -121,20 +121,21 @@ public abstract class Entity : Interactable
         }
 
         //shake the screen
-        float shakeTime = 2f;
+        float shakeTime = 0.3f;
 
         Debug.Log("screenshake");
         vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 3;
         vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 3;
 
-        shakeTime -= Time.deltaTime;
-
-        if(shakeTime <= 0)
+        do
         {
-            Debug.Log("Screen Reset");
-            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
-            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
+            shakeTime = shakeTime -  Time.deltaTime;
         }
+        while (shakeTime > 0);
+
+        Debug.Log("Screen Reset");
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0;
     }
 
     /// <summary>
