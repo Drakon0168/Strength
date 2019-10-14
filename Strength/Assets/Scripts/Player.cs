@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
@@ -264,5 +265,11 @@ public class Player : Entity
             manaMajor = true;
         }
     }
+    public override void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
 public delegate void Transformation();
+
+

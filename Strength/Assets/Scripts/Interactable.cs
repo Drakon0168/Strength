@@ -49,7 +49,7 @@ public abstract class Interactable : MonoBehaviour
         collider2 = GetComponent<Collider2D>();
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }
